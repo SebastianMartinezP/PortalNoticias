@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/5.0.0/mdb.min.css" rel="stylesheet" />
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/5.0.0/mdb.min.js"></script>
+
+    <link rel="stylesheet" href="../css/index.css">
+    <title>card_with_modal</title>
+</head>
+<body>
+    <!-- NEWS CARD -->
+                        
+    <div class="card my-2 mx-2 card-w">
+        <div class="bg-image hover-overlay">
+
+            <div class="bg-image rounded-6">
+                <img src="../img/1662129246-covid-viernes.jpg" class="w-100" />
+                <!-- Mask -->
+                <div class="mask" style="background-color: rgba(0, 0, 0, 0.6)">
+                    <div class="card-img-overlay">
+                        <h5 class="card-title text-white user-select-none"> - NOTICIAS - </h5>
+                        <p class="card-text text-white user-select-none">VIERNES 2, SEPTIEMBRE 2022
+                            11:06 HRS</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="card-body">
+            <h3 class="card-title">Minsal reporta 6.418 nuevos casos de COVID-19: activos tienen una
+                leve alza este viernes</h3>
+        </div>
+
+        <div class="card-footer">
+            <p class="card-text">El Departamento de Estadísticas e Información de Salud (DEIS)
+                confirmó la muerte de 35 pacientes, por lo que la cifra de fallecidos aumentó a
+                60.543.
+            </p>
+            <div class="d-flex justify-content-between my-2">
+                <div>
+                    <i class="bi bi-chat-square-dots mx-2"></i>
+                    <small class="text-muted user-select-none">341 comentarios</small>
+                </div>
+                <a href="#!" class="btn btn-dark ripple" data-mdb-toggle="modal"
+                    data-mdb-target="#exampleModal">Leer más</a>
+            </div>
+
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable modal-xl" style="max-width: 1900px;">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="exampleModalLabel">
+                            Minsal reporta 6.418 nuevos casos de COVID-19: activos tienen una
+                            leve alza este viernes</h4>
+                        <button type="button" class="btn-close" data-mdb-dismiss="modal"
+                            aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-lg-1 bg-light">
+                            </div>
+
+                            <div class="col-lg-10 bg-light">
+                                <div class="text-paragraph">
+                                    <p>El Ministerio de Salud (Minsal) entregó, durante la mañana de
+                                        este
+                                        viernes, un nuevo balance de la pandemia del COVID-19. En su
+                                        informe
+                                        se
+                                        confirmaron 6.418 nuevos casos,​ sumando 4.522.295 desde el
+                                        inicio
+                                        de la
+                                        pandemia.</p>
+
+                                    <p>En tanto, 25.319 pacientes están en etapa activa del virus,
+                                        es decir,
+                                        en
+                                        el periodo contagiante de la enfermedad.</p>
+
+                                    <p>Por otra parte, el Departamento de Estadísticas e Información
+                                        de
+                                        Salud
+                                        (DEIS) confirmó la muerte de 35 pacientes, por lo que la
+                                        cifra de
+                                        fallecidos aumentó a 60.543.</p>
+
+                                    <p>Asimismo, se informó que hay 141 pacientes internados en
+                                        Unidades de
+                                        Cuidados Intensivos (UCI) del país, de los cuales 94 están
+                                        conectados a
+                                        ventilación mecánica invasiva. </p>
+                                    <p>En relación a la Red Integrada de Salud, existe un total de
+                                        280 camas
+                                        críticas disponibles. Respecto a la de Red de Laboratorios y
+                                        la
+                                        capacidad diagnóstica, se informaron los resultados de
+                                        63.978
+                                        exámenes
+                                        PCR, alcanzando a la fecha un total de 44.101.506 analizados
+                                        a nivel
+                                        nacional.</p>
+
+                                    <p>Sobre la positividad para las últimas 24 horas, a nivel país
+                                        es de
+                                        10,38%
+                                        y en la Región Metropolitana es de 9,60%.</p>
+
+                                    <p>Según toma de muestra, las regiones con mayor positividad en
+                                        la
+                                        última
+                                        semana son O'Higgins, Araucanía, Maule y Biobío. En tanto,
+                                        la región
+                                        de
+                                        Atacama tiene la tasa de incidencia actual más alta por 100
+                                        mil
+                                        habitantes, seguida por las regiones de Ñuble, Maule y
+                                        Biobío.</p>
+                                </div>
+                                <div>
+                                    <!-- Carousel wrapper -->
+                                    <div id="carouselBasicExample"
+                                        class="carousel slide carousel-fade"
+                                        data-mdb-ride="carousel">
+                                        <!-- Indicators -->
+                                        <div class="carousel-indicators">
+                                            <button type="button"
+                                                data-mdb-target="#carouselBasicExample"
+                                                data-mdb-slide-to="0" class="active"
+                                                aria-current="true" aria-label="Slide 1"></button>
+                                            <button type="button"
+                                                data-mdb-target="#carouselBasicExample"
+                                                data-mdb-slide-to="1" aria-label="Slide 2"></button>
+                                            <button type="button"
+                                                data-mdb-target="#carouselBasicExample"
+                                                data-mdb-slide-to="2" aria-label="Slide 3"></button>
+                                        </div>
+
+                                        <!-- Inner -->
+                                        <div class="carousel-inner">
+                                            <!-- Single item -->
+                                            <div class="carousel-item active">
+                                                <img src="https://mdbcdn.b-cdn.net/img/Photos/Slides/img%20(15).webp"
+                                                    class="d-block w-100"
+                                                    alt="Sunset Over the City" />
+                                                <div class="carousel-caption d-none d-md-block">
+                                                    <h5>First slide label</h5>
+                                                    <p>
+                                                        Nulla vitae elit libero, a pharetra augue
+                                                        mollis
+                                                        interdum.
+                                                    </p>
+                                                </div>
+                                            </div>
+
+                                            <!-- Single item -->
+                                            <div class="carousel-item">
+                                                <img src="https://mdbcdn.b-cdn.net/img/Photos/Slides/img%20(22).webp"
+                                                    class="d-block w-100" alt="Canyon at Nigh" />
+                                                <div class="carousel-caption d-none d-md-block">
+                                                    <h5>Second slide label</h5>
+                                                    <p>
+                                                        Lorem ipsum dolor sit amet, consectetur
+                                                        adipiscing
+                                                        elit.
+                                                    </p>
+                                                </div>
+                                            </div>
+
+                                            <!-- Single item -->
+                                            <div class="carousel-item">
+                                                <img src="https://mdbcdn.b-cdn.net/img/Photos/Slides/img%20(23).webp"
+                                                    class="d-block w-100"
+                                                    alt="Cliff Above a Stormy Sea" />
+                                                <div class="carousel-caption d-none d-md-block">
+                                                    <h5>Third slide label</h5>
+                                                    <p>
+                                                        Praesent commodo cursus magna, vel
+                                                        scelerisque nisl
+                                                        consectetur.
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Inner -->
+
+                                        <!-- Controls -->
+                                        <button class="carousel-control-prev" type="button"
+                                            data-mdb-target="#carouselBasicExample"
+                                            data-mdb-slide="prev">
+                                            <span class="carousel-control-prev-icon"
+                                                aria-hidden="true"></span>
+                                            <span class="visually-hidden">Previous</span>
+                                        </button>
+                                        <button class="carousel-control-next" type="button"
+                                            data-mdb-target="#carouselBasicExample"
+                                            data-mdb-slide="next">
+                                            <span class="carousel-control-next-icon"
+                                                aria-hidden="true"></span>
+                                            <span class="visually-hidden">Next</span>
+                                        </button>
+                                    </div>
+                                    <!-- Carousel wrapper -->
+                                </div>
+                            </div>
+
+
+                            <div class="col-lg-1 bg-light">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary"
+                            data-mdb-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
