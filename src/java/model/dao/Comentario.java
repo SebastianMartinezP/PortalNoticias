@@ -9,34 +9,35 @@ import java.util.List;
 
 import model.connection.*;
 
-public class Usuario
+public class Comentario
 {
     MySqlConnection mysqlConnection = new MySqlConnection();
     Connection connection;
     PreparedStatement preparedStatement;
     ResultSet resultSet;
     
-    public String Save(model.dto.Usuario user)
+    public String Save(model.dto.Comentario comentario)
     {
-        String sql = "INSERT INTO usuario(nickname, password, is_enabled) VALUES(?,?,?)";
+        String sql = "INSERT INTO comentario(contenido, is_enabled, id_noticia, id_usuario) VALUES(?,?,?,?)";
         try {
             this.connection = mysqlConnection.getConection();
             this.preparedStatement = this.connection.prepareStatement(sql);
-            this.preparedStatement.setString(1, user.getNickname());
-            this.preparedStatement.setString(2, user.getPassword());
-            this.preparedStatement.setBoolean(3, user.getIsEnabled());
+            this.preparedStatement.setString(1, comentario.getContenido());
+            this.preparedStatement.setBoolean(2, comentario.getIsEnabled());
+            this.preparedStatement.setInt(3, comentario.getIdNoticia());
+            this.preparedStatement.setInt(3, comentario.getIdUsuario());
             this.preparedStatement.executeUpdate();
             
         } catch (Exception e) {
             return e.toString();
         }
-        return "Usuario guardado correctamente";
+        return "Comentario guardado correctamente";
     }
     
-    public List<model.dto.Usuario> list()
+    public List<model.dto.Comentario> list()
     {
-        String sql = "SELECT * FROM usuario";
-        List<model.dto.Usuario> list = new ArrayList<>();
+        String sql = "SELECT * FROM comentario";
+        List<model.dto.Comentario> list = new ArrayList<>();
 
         try
         {
@@ -47,11 +48,12 @@ public class Usuario
 
             while (this.resultSet.next())
             {
-                model.dto.Usuario element = new model.dto.Usuario();
+                model.dto.Comentario element = new model.dto.Comentario();
 
                 element.setIdUsuario(this.resultSet.getInt("id_usuario"));
-                element.setNickname(this.resultSet.getString("nickname"));
-                element.setPassword(this.resultSet.getString("password"));
+                element.setContenido(this.resultSet.getString("contenido"));
+                element.setIdNoticia(this.resultSet.getInt("id_noticia"));
+                element.setIdUsuario(this.resultSet.getInt("id_usuario"));
                 element.setIsEnabled(this.resultSet.getBoolean("is_enabled"));
 
                 list.add(element);
@@ -64,29 +66,9 @@ public class Usuario
         return list;
     }
     
-    public boolean Update(model.dto.Usuario user)
+    public String UpdateIsEnabledByUser(model.dto.Usuario user, boolean newState)
     {
-        String sql = 
-                "UPDATE usuario SET nickname = ?, password = ?, is_enabled = ? WHERE id_usuario = ?";
-        
-        try {
-            this.connection = mysqlConnection.getConection();
-            this.preparedStatement = this.connection.prepareStatement(sql);
-            this.preparedStatement.setString(1, user.getNickname());
-            this.preparedStatement.setString(2, user.getPassword());
-            this.preparedStatement.setBoolean(3, user.getIsEnabled());
-            this.preparedStatement.setInt(4, user.getIdUsuario());
-            this.preparedStatement.executeUpdate();
-            
-            return true;
-        } catch (Exception e) {
-        }
-        return false;
-    }
-    
-    public String UpdateIsEnabledByCredentials(model.dto.Usuario user, boolean newState)
-    {
-        String sql = "UPDATE usuario SET is_enabled = ? WHERE id_usuario = ?";
+        String sql = "UPDATE comentario SET is_enabled = ? WHERE id_usuario = ?";
         
         try
         {

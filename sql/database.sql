@@ -36,7 +36,7 @@ CREATE TABLE tipo_noticia (
 CREATE TABLE usuario (
     id_usuario  INT PRIMARY KEY AUTO_INCREMENT,
     nickname    VARCHAR(45) NOT NULL,
-    pasword     VARCHAR(45) NOT NULL,
+    password     VARCHAR(45) NOT NULL,
     is_enabled  BIT NOT NULL
 );
 
@@ -62,16 +62,16 @@ CREATE TABLE imagen (
 
 CREATE TABLE comentario (
     id_comentario INT PRIMARY KEY AUTO_INCREMENT,
-
+    contenido VARCHAR(250) NULL,
+    is_enabled BIT NOT NULL,
     id_noticia INT,
     FOREIGN KEY (id_noticia) REFERENCES noticia(id_noticia),
-
     id_usuario INT,
     FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario)
 );
 
 
 -- INSERTS
-INSERT INTO tipo_noticia (id_tipo_noticia, descripcion) 
+INSERT INTO tipo_noticia (descripcion) 
 VALUES ('politica'),('deportes'),('economia'),('mujer'),('noticias');
 

@@ -5,13 +5,13 @@ public class Usuario
     private int idUsuario;
     private String nickname;
     private String password;
-    private Boolean isEnabled;
+    private boolean isEnabled;
 
     public Usuario()
     {
     }
 
-    public Usuario(int idUsuario, String nickname, String password, Boolean isEnabled)
+    public Usuario(int idUsuario, String nickname, String password, boolean isEnabled)
     {
         this.idUsuario = idUsuario;
         this.nickname = nickname;
@@ -34,7 +34,7 @@ public class Usuario
         return password;
     }
 
-    public Boolean getIsEnabled()
+    public boolean getIsEnabled()
     {
         return isEnabled;
     }
@@ -54,7 +54,7 @@ public class Usuario
         this.password = password;
     }
 
-    public void setIsEnabled(Boolean isEnabled)
+    public void setIsEnabled(boolean isEnabled)
     {
         this.isEnabled = isEnabled;
     }

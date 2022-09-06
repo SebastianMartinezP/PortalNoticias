@@ -6,13 +6,13 @@ public class Comentario
     private String contenido;
     private int idNoticia;
     private int idUsuario;
-    private Boolean isEnabled;
+    private boolean isEnabled;
 
     public Comentario()
     {
     }
 
-    public Comentario(int idComentario, String contenido, int idNoticia, int idUsuario, Boolean isEnabled)
+    public Comentario(int idComentario, String contenido, int idNoticia, int idUsuario, boolean isEnabled)
     {
         this.idComentario = idComentario;
         this.contenido = contenido;
@@ -41,7 +41,7 @@ public class Comentario
         return idUsuario;
     }
 
-    public Boolean getIsEnabled()
+    public boolean getIsEnabled()
     {
         return isEnabled;
     }
@@ -66,7 +66,7 @@ public class Comentario
         this.idUsuario = idUsuario;
     }
 
-    public void setIsEnabled(Boolean isEnabled)
+    public void setIsEnabled(boolean isEnabled)
     {
         this.isEnabled = isEnabled;
     }
