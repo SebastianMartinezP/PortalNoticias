@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,14 +18,13 @@ public class Noticia
     Connection connection;
     PreparedStatement preparedStatement;
     ResultSet resultSet;
-    
-    
+    DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
     
     
     
     public List<model.dto.Noticia> list()
     {
-        String sql = "SELECT * FROM Noticia";
+        String sql = "SELECT * FROM noticia";
         List<model.dto.Noticia> list = new ArrayList<>();
 
         try
@@ -45,12 +45,17 @@ public class Noticia
                 element.setSubtitulo(this.resultSet.getString("subtitulo"));
                 element.setCuerpo(this.resultSet.getString("cuerpo"));
                 element.setFechaEmision(
-                        LocalDateTime.parse(this.resultSet.getString("fecha_emision")));
+                    LocalDateTime.parse(
+                        this.resultSet.getString("fecha_emision"), 
+                        this.dateTimeFormatter
+                    )
+                );
                 list.add(element);
             }
 
         } catch (Exception e)
         {
+            System.out.println(e.toString());
         }
 
         return list;

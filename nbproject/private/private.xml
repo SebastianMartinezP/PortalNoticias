@@ -3,8 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/E:/DUOC/Java%20web/PortalNoticias/src/java/model/dao/Usuario.java</file>
-            <file>file:/E:/DUOC/Java%20web/PortalNoticias/src/java/test/Testing.java</file>
+            <file>file:/E:/DUOC/Java%20web/PortalNoticias/web/index.jsp</file>
+            <file>file:/E:/DUOC/Java%20web/PortalNoticias/src/java/controller/ServletController.java</file>
         </group>
     </open-files>
 </project-private>

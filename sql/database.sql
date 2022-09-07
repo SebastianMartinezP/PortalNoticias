@@ -75,3 +75,25 @@ CREATE TABLE comentario (
 INSERT INTO tipo_noticia (descripcion) 
 VALUES ('politica'),('deportes'),('economia'),('mujer'),('noticias');
 
+INSERT INTO noticia (titulo, subtitulo, cuerpo, fecha_emision, autor, id_tipo_noticia, pdf)
+VALUES
+('titulo_noticia_politica_1', 'subtitulo_noticia_politica_1', 'cuerpo_noticia_politica_1', '2022/07/09 16:43:00', 'autor_noticia_politica_1', 6, null),
+('titulo_noticia_politica_2', 'subtitulo_noticia_politica_2', 'cuerpo_noticia_politica_2', '2022/07/09 16:43:00', 'autor_noticia_politica_2', 6, null),
+('titulo_noticia_politica_3', 'subtitulo_noticia_politica_3', 'cuerpo_noticia_politica_3', '2022/07/09 16:43:00', 'autor_noticia_politica_3', 6, null),
+('titulo_noticia_politica_4', 'subtitulo_noticia_politica_4', 'cuerpo_noticia_politica_4', '2022/07/09 16:43:00', 'autor_noticia_politica_4', 6, null),
+('titulo_noticia_deportes_1', 'subtitulo_noticia_deportes_1', 'cuerpo_noticia_deportes_1', '2022/07/09 16:43:00', 'autor_noticia_deportes_1', 7, null),
+('titulo_noticia_deportes_2', 'subtitulo_noticia_deportes_2', 'cuerpo_noticia_deportes_2', '2022/07/09 16:43:00', 'autor_noticia_deportes_2', 7, null),
+('titulo_noticia_deportes_3', 'subtitulo_noticia_deportes_3', 'cuerpo_noticia_deportes_3', '2022/07/09 16:43:00', 'autor_noticia_deportes_3', 7, null),
+('titulo_noticia_deportes_4', 'subtitulo_noticia_deportes_4', 'cuerpo_noticia_deportes_4', '2022/07/09 16:43:00', 'autor_noticia_deportes_4', 7, null),
+('titulo_noticia_economia_1', 'subtitulo_noticia_economia_1', 'cuerpo_noticia_economia_1', '2022/07/09 16:43:00', 'autor_noticia_economia_1', 8, null),
+('titulo_noticia_economia_2', 'subtitulo_noticia_economia_2', 'cuerpo_noticia_economia_2', '2022/07/09 16:43:00', 'autor_noticia_economia_2', 8, null),
+('titulo_noticia_economia_3', 'subtitulo_noticia_economia_3', 'cuerpo_noticia_economia_3', '2022/07/09 16:43:00', 'autor_noticia_economia_3', 8, null),
+('titulo_noticia_economia_4', 'subtitulo_noticia_economia_4', 'cuerpo_noticia_economia_4', '2022/07/09 16:43:00', 'autor_noticia_economia_4', 8, null),
+('titulo_noticia_mujer_1', 'subtitulo_noticia_mujer_1', 'cuerpo_noticia_mujer_1', '2022/07/09 16:43:00', 'autor_noticia_mujer_1', 9, null),
+('titulo_noticia_mujer_2', 'subtitulo_noticia_mujer_2', 'cuerpo_noticia_mujer_2', '2022/07/09 16:43:00', 'autor_noticia_mujer_2', 9, null),
+('titulo_noticia_mujer_3', 'subtitulo_noticia_mujer_3', 'cuerpo_noticia_mujer_3', '2022/07/09 16:43:00', 'autor_noticia_mujer_3', 9, null),
+('titulo_noticia_mujer_4', 'subtitulo_noticia_mujer_4', 'cuerpo_noticia_mujer_4', '2022/07/09 16:43:00', 'autor_noticia_mujer_4', 9, null),
+('titulo_noticia_noticias_1', 'subtitulo_noticia_noticias_1', 'cuerpo_noticia_noticias_1', '2022/07/09 16:43:00', 'autor_noticia_noticias_1',10, null),
+('titulo_noticia_noticias_2', 'subtitulo_noticia_noticias_2', 'cuerpo_noticia_noticias_2', '2022/07/09 16:43:00', 'autor_noticia_noticias_2',10, null),
+('titulo_noticia_noticias_3', 'subtitulo_noticia_noticias_3', 'cuerpo_noticia_noticias_3', '2022/07/09 16:43:00', 'autor_noticia_noticias_3',10, null),
+('titulo_noticia_noticias_4', 'subtitulo_noticia_noticias_4', 'cuerpo_noticia_noticias_4', '2022/07/09 16:43:00', 'autor_noticia_noticias_4',10, null);

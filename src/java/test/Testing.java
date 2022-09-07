@@ -40,9 +40,10 @@ public class Testing
         //System.out.println(tipo_noticia.list());
         
 
-        /////////////////////////// Noticia (R)
+        /////////////////////////// Noticia (R) TESTED
         
-
+        model.dao.Noticia noticia = new model.dao.Noticia();
+        System.out.println(noticia.list());
 
         /////////////////////////// Imagen (R)
         
