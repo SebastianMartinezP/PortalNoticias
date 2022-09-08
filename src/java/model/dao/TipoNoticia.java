@@ -44,4 +44,35 @@ public class TipoNoticia
 
         return list;
     }
+    
+    public List<model.dto.TipoNoticia> list(String tipoNoticia)
+    {
+        String sql = "SELECT * FROM tipo_noticia WHERE descripcion = ?";
+        List<model.dto.TipoNoticia> list = new ArrayList<>();
+
+        try
+        {
+
+            this.connection = mysqlConnection.getConection();
+            this.preparedStatement = this.connection.prepareStatement(sql);
+            this.preparedStatement.setString(1, tipoNoticia);
+            this.resultSet = this.preparedStatement.executeQuery();
+
+            while (this.resultSet.next())
+            {
+
+                model.dto.TipoNoticia element = new model.dto.TipoNoticia();
+
+                element.setIdTipoNoticia(this.resultSet.getInt("id_tipo_noticia"));
+                element.setDescripcion(this.resultSet.getString("descripcion"));
+
+                list.add(element);
+            }
+
+        } catch (Exception e)
+        {
+        }
+
+        return list;
+    }
 }

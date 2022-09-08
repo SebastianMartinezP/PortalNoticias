@@ -1,9 +1,4 @@
 package test;
-
-//import model.connection;
-//import model.dao;
-//import model.dto;
-
 public class Testing
 {
 
@@ -38,12 +33,13 @@ public class Testing
         
         //model.dao.TipoNoticia tipo_noticia = new model.dao.TipoNoticia();
         //System.out.println(tipo_noticia.list());
-        
+        //System.out.println(tipo_noticia.list(6));
 
         /////////////////////////// Noticia (R) TESTED
         
         model.dao.Noticia noticia = new model.dao.Noticia();
         System.out.println(noticia.list());
+        System.out.println(noticia.list(6));
 
         /////////////////////////// Imagen (R)
         

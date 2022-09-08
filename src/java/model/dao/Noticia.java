@@ -24,7 +24,7 @@ public class Noticia
     
     public List<model.dto.Noticia> list()
     {
-        String sql = "SELECT * FROM noticia";
+        String sql = "SELECT * FROM Noticia";
         List<model.dto.Noticia> list = new ArrayList<>();
 
         try
@@ -56,6 +56,48 @@ public class Noticia
         } catch (Exception e)
         {
             System.out.println(e.toString());
+            return null;
+        }
+
+        return list;
+    }
+    
+    public List<model.dto.Noticia> list(int tipoNoticia)
+    {
+        String sql = "SELECT * FROM Noticia WHERE id_tipo_noticia = ?";
+        List<model.dto.Noticia> list = new ArrayList<>();
+
+        try
+        {
+
+            this.connection = mysqlConnection.getConection();
+            this.preparedStatement = this.connection.prepareStatement(sql);
+            this.preparedStatement.setInt(1, tipoNoticia);
+            this.resultSet = this.preparedStatement.executeQuery();
+
+            while (this.resultSet.next())
+            {
+                model.dto.Noticia element = new model.dto.Noticia();
+
+                element.setIdNoticia(this.resultSet.getInt("id_noticia"));
+                element.setIdTipoNoticia(this.resultSet.getInt("id_tipo_noticia"));
+                element.setAutor(this.resultSet.getString("autor"));
+                element.setTitulo(this.resultSet.getString("titulo"));
+                element.setSubtitulo(this.resultSet.getString("subtitulo"));
+                element.setCuerpo(this.resultSet.getString("cuerpo"));
+                element.setFechaEmision(
+                    LocalDateTime.parse(
+                        this.resultSet.getString("fecha_emision"), 
+                        this.dateTimeFormatter
+                    )
+                );
+                list.add(element);
+            }
+
+        } catch (Exception e)
+        {
+            System.out.println(e.toString());
+            return null;
         }
 
         return list;

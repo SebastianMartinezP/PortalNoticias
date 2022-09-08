@@ -29,18 +29,45 @@
             <!-- Titulo -->
             <div class="row">
                 <div class="mt-3">
-                    <iframe class="titlebar-iframe" src="./html/titlebar.html" frameborder="0"></iframe>
+                    <iframe id="titleBar" name="titleBar" class="titlebar-iframe" src="jsp/titleBar.jsp" frameborder="0"></iframe>
                 </div>
 
             </div>
 
             <!-- Barra de navegacion-->
-
-
+            
             <div class="row mb-3">
                 <div class="col-sm-2"></div>
                 <div class="col-lg-8">
-                    <iframe class="navbar-iframe" src="./html/navbar.html" frameborder="0"></iframe>
+                    <div class="d-flex justify-content-between">
+                        <div class="btn-group">
+                            <a href="ServletController?tipoNoticia=todo" target="newsFeed" 
+                               class="btn btn-light">
+                                <h6>TODO</h6></a>
+                            <a href="ServletController?tipoNoticia=politica" target="newsFeed" 
+                               class="btn btn-light">
+                                <h6>POLÍTICA</h6></a>
+                            <a href="ServletController?tipoNoticia=deportes" target="newsFeed" 
+                               class="btn btn-light">
+                                <h6>DEPORTES</h6></a>
+                            <a href="ServletController?tipoNoticia=economia" target="newsFeed" 
+                               class="btn btn-light">
+                                <h6>ECONOMÍA</h6></a>
+                            <a href="ServletController?tipoNoticia=mujer" target="newsFeed" 
+                               class="btn btn-light">
+                                <h6>MUJER</h6></a>
+                            <a href="ServletController?tipoNoticia=noticias" target="newsFeed" 
+                               class="btn btn-light">
+                                <h6>NOTICIAS</h6></a>
+                        </div>
+
+                        <form class="d-flex">
+                            <input class="form-control me-2" type="text" placeholder="Buscar">
+                            <button class="btn btn-dark" type="button">
+                                <i class="bi bi-search"></i>
+                            </button>
+                        </form>
+                    </div>
                 </div>    
                 <div class="col-sm-2"></div>
             </div>  
@@ -50,44 +77,10 @@
                 <div class="col-lg-12 bg-light">
                     <div class="my-3">
                         <div class="d-flex flex-wrap justify-content-evenly">
+                            <iframe id="newsFeed" name="newsFeed" style="width: 100%; height: 100%;"></iframe>
                             
-                            <c:forEach var="n" items="${noticias}">
-                                <div class="card ">
-                                    <div class="bg-image hover-overlay">
-                                        <div class="bg-image rounded-6">
-                                            <img src="../img/1662129246-covid-viernes.jpg" class="w-100" />
-                                            <!-- Mask -->
-                                            <div class="mask" style="background-color: rgba(0, 0, 0, 0.6)">
-                                                <div class="card-img-overlay">
-                                                    <h5 class="card-title text-white user-select-none"> ${n.getIdNoticia()} </h5>
-                                                    <p class="card-text text-white user-select-none"> ${n.getFechaEmision()}</p>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                    </div>
-
-                                    <div class="card-body">
-                                        <h3 class="card-title">${n.getTitulo()}</h3>
-                                    </div>
-
-                                    <div class="card-footer">
-                                        <p class="card-text">${n.getSubtitulo()}</p>
-                                        <div class="d-flex justify-content-between my-2">
-                                            <div>
-                                                <i class="bi bi-chat-square-dots mx-2"></i>
-                                                <small class="text-muted user-select-none">341 comentarios</small>
-                                            </div>
-                                            <a href="#!" class="btn btn-dark ripple">Leer más</a>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </c:forEach>
-
-
-
-
+                            <h1><%= new model.dao.Noticia().list() %></h1>
+                            
                         </div>
                     </div>
                 </div>
