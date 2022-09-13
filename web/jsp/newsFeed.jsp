@@ -23,38 +23,47 @@
         <title>newsFeed</title>
     </head>
     <body>
-        <c:forEach var="n" items="${index_noticias}">
-            <div class="card">
-                <div class="bg-image hover-overlay">
-                    <div class="bg-image rounded-6">
-                        <img src="../img/1662129246-covid-viernes.jpg" class="w-100" />
-                        <!-- Mask -->
-                        <div class="mask" style="background-color: rgba(0, 0, 0, 0.6)">
-                            <div class="card-img-overlay">
-                                <h5 class="card-title text-white user-select-none"> ${n.getIdNoticia()} </h5>
-                                <p class="card-text text-white user-select-none"> ${n.getFechaEmision()}</p>
+        <div class="row" style="width: 100%; height: 100%;">
+            <div class="col-lg-12 bg-light">
+                <div class="my-3">
+
+                    <div class="d-flex flex-wrap justify-content-evenly">
+                        <c:forEach var="n" items="${index_noticias}">
+                            <div class="card">
+                                <div class="bg-image hover-overlay">
+                                    <div class="bg-image rounded-6">
+                                        <img src="../img/1662129246-covid-viernes.jpg" class="w-100" />
+                                        <!-- Mask -->
+                                        <div class="mask" style="background-color: rgba(0, 0, 0, 0.6)">
+                                            <div class="card-img-overlay">
+                                                <h5 class="card-title text-white user-select-none"> ${n.getIdNoticia()} </h5>
+                                                <p class="card-text text-white user-select-none"> ${n.getFechaEmision()}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="card-body">
+                                    <h3 class="card-title">${n.getTitulo()}</h3>
+                                </div>
+
+                                <div class="card-footer">
+                                    <p class="card-text">${n.getSubtitulo()}</p>
+                                    <div class="d-flex justify-content-between my-2">
+                                        <div>
+                                            <i class="bi bi-chat-square-dots mx-2"></i>
+                                            <small class="text-muted user-select-none">341 comentarios</small>
+                                        </div>
+                                        <a href="#!" class="btn btn-dark ripple">Leer más</a>
+                                    </div>
+
+                                </div>
                             </div>
-                        </div>
+                        </c:forEach>
                     </div>
-
-                </div>
-
-                <div class="card-body">
-                    <h3 class="card-title">${n.getTitulo()}</h3>
-                </div>
-
-                <div class="card-footer">
-                    <p class="card-text">${n.getSubtitulo()}</p>
-                    <div class="d-flex justify-content-between my-2">
-                        <div>
-                            <i class="bi bi-chat-square-dots mx-2"></i>
-                            <small class="text-muted user-select-none">341 comentarios</small>
-                        </div>
-                        <a href="#!" class="btn btn-dark ripple">Leer más</a>
-                    </div>
-
                 </div>
             </div>
-        </c:forEach>
+        </div>
     </body>
 </html>

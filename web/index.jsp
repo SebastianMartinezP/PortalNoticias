@@ -25,7 +25,7 @@
     </head>
 
     <body>
-        <div class="container-fluid">
+        <div class="container-fluid" style="height: 100%;">
             <!-- Titulo -->
             <div class="row">
                 <div class="mt-3">
@@ -35,7 +35,7 @@
             </div>
 
             <!-- Barra de navegacion-->
-            
+
             <div class="row mb-3">
                 <div class="col-sm-2"></div>
                 <div class="col-lg-8">
@@ -73,22 +73,13 @@
             </div>  
 
             <!-- Feed de noticias -->
-            <div class="row">
-                <div class="col-lg-12 bg-light">
-                    <div class="my-3">
-                        <div class="d-flex flex-wrap justify-content-evenly">
-                            <iframe id="newsFeed" name="newsFeed" style="width: 100%; height: 100%;"></iframe>
-                            
-                            <h1><%= new model.dao.Noticia().list() %></h1>
-                            
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
+            <iframe id="newsFeed" name="newsFeed" style="width: 100%; height: 100%;"></iframe>
 
         </div>
-    </body>
+
+
+
+    </div>
+</body>
 
 </html>

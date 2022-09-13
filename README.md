@@ -25,12 +25,12 @@ El portal noticioso “Ole Manolo” desea generar una solución web que permita
 * Es posible denunciar a los usuarios que realizan opiniones no acordes con la política del portal
 * Debe tener la posibilidad de visitar las antiguas noticias
 * Posibilidad de ver las versiones anteriores del portal (búsqueda de una fecha en especial)
-* Descarga de una noticia en formato PFD
+* Descarga de una noticia en formato PDF
 * Generar espacios para publicidad por categoría
 * Búsqueda de una noticia
 * Dar de baja a un usuario
 
 ### Generar Informe:
- + Noticias con mas nueva ( 2 )
- + Noticias mas antigua ( 2 )
+ + Noticias mas nuevas ( 2 )
+ + Noticias mas antiguas ( 2 )
  + Usuarios con mas opiniones
