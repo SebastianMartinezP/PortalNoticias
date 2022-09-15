@@ -41,29 +41,29 @@
                 <div class="col-lg-8">
                     <div class="d-flex justify-content-between">
                         <div class="btn-group">
-                            <a href="ServletController?tipoNoticia=todo" target="newsFeed" 
+                            <a href="ServletController?site=index&action=getNoticiaByTipoNoticia&tipoNoticia=todo" target="newsFeed" 
                                class="btn btn-light">
                                 <h6>TODO</h6></a>
-                            <a href="ServletController?tipoNoticia=politica" target="newsFeed" 
+                            <a href="ServletController?site=index&action=getNoticiaByTipoNoticia&tipoNoticia=politica" target="newsFeed" 
                                class="btn btn-light">
                                 <h6>POLÍTICA</h6></a>
-                            <a href="ServletController?tipoNoticia=deportes" target="newsFeed" 
+                            <a href="ServletController?site=index&action=getNoticiaByTipoNoticia&tipoNoticia=deportes" target="newsFeed" 
                                class="btn btn-light">
                                 <h6>DEPORTES</h6></a>
-                            <a href="ServletController?tipoNoticia=economia" target="newsFeed" 
+                            <a href="ServletController?site=index&action=getNoticiaByTipoNoticia&tipoNoticia=economia" target="newsFeed" 
                                class="btn btn-light">
                                 <h6>ECONOMÍA</h6></a>
-                            <a href="ServletController?tipoNoticia=mujer" target="newsFeed" 
+                            <a href="ServletController?site=index&action=getNoticiaByTipoNoticia&tipoNoticia=mujer" target="newsFeed" 
                                class="btn btn-light">
                                 <h6>MUJER</h6></a>
-                            <a href="ServletController?tipoNoticia=noticias" target="newsFeed" 
+                            <a href="ServletController?site=index&action=getNoticiaByTipoNoticia&tipoNoticia=noticias" target="newsFeed" 
                                class="btn btn-light">
                                 <h6>NOTICIAS</h6></a>
                         </div>
 
-                        <form class="d-flex">
-                            <input class="form-control me-2" type="text" placeholder="Buscar">
-                            <button class="btn btn-dark" type="button">
+                        <form class="d-flex" action="ServletController?site=index&action=searchNoticiaByTitulo" method="POST" target="newsFeed">
+                            <input id="txtSearch" name="txtSearch" class="form-control me-2" type="text" placeholder="Buscar Noticias">
+                            <button class="btn btn-dark" type="submit" id="action" name="action" value="search">
                                 <i class="bi bi-search"></i>
                             </button>
                         </form>

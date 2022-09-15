@@ -40,6 +40,7 @@ public class Testing
         model.dao.Noticia noticia = new model.dao.Noticia();
         System.out.println(noticia.list());
         System.out.println(noticia.list(3));
+        System.out.println(noticia.listByTitle("pol"));
 
         /////////////////////////// Imagen (R)
         
