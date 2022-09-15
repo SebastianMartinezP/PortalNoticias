@@ -64,6 +64,7 @@ public class Usuario
     {
         return "Usuario{" + "idUsuario=" + idUsuario + ", nickname=" + nickname + ", password=" + password + ", isEnabled=" + isEnabled + '}';
     }
+    //Prueba repo
     
     
 }
