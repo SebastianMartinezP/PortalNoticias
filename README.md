@@ -8,29 +8,35 @@ El portal noticioso “Ole Manolo” desea generar una solución web que permita
 
 ### Generar un diseño acorde para las siguientes categorías:
 
- + Política
- + Deportes
- + Economía
- + Mujer
- + Noticias
+ + Política ✔
+ + Deportes ✔
+ + Economía ✔
+ + Mujer    ✔
+ + Noticias ✔
 
 ### Cada una de las categorías deben manejar:
 
- + Titulo de la noticia
- + Texto informativo
- + Galería de imágenes
- + Blog de opiniones
+ + Titulo de la noticia ✔
+ + Texto informativo    ✔
+ + Galería de imágenes (S)
 
-* Los usuarios registrados pueden realizar opiniones
-* Es posible denunciar a los usuarios que realizan opiniones no acordes con la política del portal
-* Debe tener la posibilidad de visitar las antiguas noticias
-* Posibilidad de ver las versiones anteriores del portal (búsqueda de una fecha en especial)
-* Descarga de una noticia en formato PDF
-* Generar espacios para publicidad por categoría
-* Búsqueda de una noticia
-* Dar de baja a un usuario
+ + Blog de opiniones (G)
+
+
+### Gise
+* Los usuarios registrados pueden realizar opiniones (G)
+* Es posible denunciar a los usuarios que realizan opiniones no acordes con la política del portal (G)
+* Dar de baja a un usuario (G)
+
+### Seba
+* Debe tener la posibilidad de visitar las antiguas noticias (S)
+* Posibilidad de ver las versiones anteriores del portal (búsqueda de una fecha en especial) (S)
+* Descarga de una noticia en formato PDF (S)
+* Generar espacios para publicidad por categoría ✔
+* Búsqueda de una noticia (S)
+
 
 ### Generar Informe:
- + Noticias mas nuevas ( 2 )
- + Noticias mas antiguas ( 2 )
- + Usuarios con mas opiniones
+ + Noticias mas nuevas ( 2 ) ()
+ + Noticias mas antiguas ( 2 ) ()
+ + Usuarios con mas opiniones ()
