@@ -25,7 +25,7 @@
     </head>
 
     <body>
-        <div class="container-fluid" style="height: 100%;">
+        <div class="container-fluid">
             <!-- Titulo -->
             <div class="row">
                 <div class="mt-3">
@@ -71,9 +71,15 @@
                 </div>    
                 <div class="col-sm-2"></div>
             </div>  
-
+            
+            <c:if test="">
+            </c:if>
+            <c:otherwise >
+                
+            </c:otherwise>
+                
             <!-- Feed de noticias -->
-            <iframe id="newsFeed" name="newsFeed" style="width: 100%; height: 100%;"></iframe>
+            <iframe class="newsfeed-iframe" id="newsFeed" name="newsFeed"></iframe>
 
         </div>
 

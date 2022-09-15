@@ -30,7 +30,15 @@ body{
 .card-iframe {
   min-width: 22rem;
   min-height: 36rem;
+  max-width: 22rem;
+  max-height: 36rem;
 } 
 
+.newsfeed-iframe {
+    height: 1000px;
+    width: 1000px;
+    min-width: 1000px;
+    max-height: 1000px;
+}
 
 
