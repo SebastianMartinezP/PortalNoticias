@@ -9,7 +9,7 @@ public class MySqlConnection
     Connection connection;
     String url = "jdbc:mysql://localhost:3306/portalnoticias";
     String user = "root";
-    String pass = "SYSTEM";
+    String pass = "";//SYSTEM";
 
     public Connection getConection()
     {

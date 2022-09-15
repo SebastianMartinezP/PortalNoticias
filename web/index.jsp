@@ -72,12 +72,6 @@
                 <div class="col-sm-2"></div>
             </div>  
             
-            <c:if test="">
-            </c:if>
-            <c:otherwise >
-                
-            </c:otherwise>
-                
             <!-- Feed de noticias -->
             <iframe class="newsfeed-iframe" id="newsFeed" name="newsFeed"></iframe>
 

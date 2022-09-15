@@ -16,27 +16,34 @@ public class ServletController extends HttpServlet
     {
         try
         {
-            
-        
             // DAOs
             model.dao.TipoNoticia daoTipoNoticia = new model.dao.TipoNoticia();
             model.dao.Noticia daoNoticia = new model.dao.Noticia();
             
-
+            
 
             // Variables 
             
             String tipoNoticia = request.getParameter("tipoNoticia");
-            int idTipoNoticia = daoTipoNoticia.list(tipoNoticia).get(0).getIdTipoNoticia();
+            List<model.dto.Noticia> noticias = null;
             
-            List<model.dto.Noticia> noticias = daoNoticia.list(idTipoNoticia);
+            if (!tipoNoticia.equals("todo")) 
+            {
+                int idTipoNoticia = daoTipoNoticia.list(tipoNoticia).get(0).getIdTipoNoticia();
+                noticias = daoNoticia.list(idTipoNoticia);
+            }
+            else
+            {
+                noticias = daoNoticia.list();
+            }
 
-            
-            request.setAttribute("index_noticias", noticias);
+            for (model.dto.Noticia noticia : noticias) {
+                noticia.setTitulo(noticia.getTitulo().replace("_"," "));
+            }
+            request.setAttribute("noticias", noticias);
             request.getRequestDispatcher("jsp/newsFeed.jsp").forward(request, response);
 
             
-        
         } catch (Exception e)
         {
             response.setContentType("text/html");
