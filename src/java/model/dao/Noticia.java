@@ -1,5 +1,12 @@
 package model.dao;
 
+
+
+import com.itextpdf.text.Document;
+import com.itextpdf.text.PageSize;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfContentByte;
+import com.itextpdf.text.pdf.PdfWriter;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.sql.Connection;
@@ -9,6 +16,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+
 
 import model.connection.*;
 
@@ -50,6 +58,7 @@ public class Noticia
                         this.dateTimeFormatter
                     )
                 );
+                element.setImagenes(new model.dao.Imagen().listImagesByNewsId(element.getIdNoticia()));
                 list.add(element);
             }
 
@@ -91,6 +100,7 @@ public class Noticia
                         this.dateTimeFormatter
                     )
                 );
+                element.setImagenes(new model.dao.Imagen().listImagesByNewsId(element.getIdNoticia()));
                 list.add(element);
             }
 
@@ -102,6 +112,50 @@ public class Noticia
 
         return list;
     }
+    
+    
+    public model.dto.Noticia findNoticia(int idNoticia)
+    {
+        String sql = "SELECT * FROM Noticia WHERE id_noticia = ?";
+        model.dto.Noticia noticia = null;
+
+        try
+        {
+
+            this.connection = mysqlConnection.getConection();
+            this.preparedStatement = this.connection.prepareStatement(sql);
+            this.preparedStatement.setInt(1, idNoticia);
+            this.resultSet = this.preparedStatement.executeQuery();
+
+            while (this.resultSet.next())
+            {
+                model.dto.Noticia element = new model.dto.Noticia();
+
+                element.setIdNoticia(this.resultSet.getInt("id_noticia"));
+                element.setIdTipoNoticia(this.resultSet.getInt("id_tipo_noticia"));
+                element.setAutor(this.resultSet.getString("autor"));
+                element.setTitulo(this.resultSet.getString("titulo"));
+                element.setSubtitulo(this.resultSet.getString("subtitulo"));
+                element.setCuerpo(this.resultSet.getString("cuerpo"));
+                element.setFechaEmision(
+                    LocalDateTime.parse(
+                        this.resultSet.getString("fecha_emision"), 
+                        this.dateTimeFormatter
+                    )
+                );
+                element.setImagenes(new model.dao.Imagen().listImagesByNewsId(element.getIdNoticia()));
+                noticia = element;
+            }
+
+        } catch (Exception e)
+        {
+            System.out.println(e.toString());
+            return null;
+        }
+
+        return noticia;
+    }
+    
     
     public List<model.dto.Noticia> listByTitle(String titulo)
     {
@@ -131,6 +185,7 @@ public class Noticia
                         this.dateTimeFormatter
                     )
                 );
+                element.setImagenes(new model.dao.Imagen().listImagesByNewsId(element.getIdNoticia()));
                 list.add(element);
             }
 
@@ -144,8 +199,9 @@ public class Noticia
     }
     
     
-    public Boolean getPdf(model.dto.Noticia noticia)
+    public String downloadPdf(model.dto.Noticia noticia)
     {
+        String path = "C:\\";
         String filename = "Noticia_" + noticia.getIdNoticia() + '_' + noticia.getFechaEmision().toString() + ".pdf";
         String sql = "SELECT pdf FROM Noticia WHERE id_noticia = " + noticia.getIdNoticia();
         try
@@ -158,7 +214,7 @@ public class Noticia
             {
                 java.sql.Blob blob = this.resultSet.getBlob("pdf");
                 InputStream inputStream = blob.getBinaryStream();
-                FileOutputStream fileOutputStream = new FileOutputStream("C:\\" + filename);
+                FileOutputStream fileOutputStream = new FileOutputStream(path + filename);
                 
                 int b = 0;
                 while ((b = inputStream.read()) != -1)
@@ -166,13 +222,24 @@ public class Noticia
                     fileOutputStream.write(b);
                 }
             }
+            else 
+            {
+                Document document = new Document(PageSize.A4);
+                PdfWriter pdfWriter = PdfWriter.getInstance(document, new FileOutputStream(path + filename));
+                document.open();
+                int[] coords = new int[] {1, 50, 50, 100, 100} ;
+                PdfContentByte canvas = pdfWriter.getDirectContent();
+                document.add(new Paragraph("Hello"));
+                document.close();
+                
+            }
         
             
         } catch (Exception e)
         {
-            return false;
+            return e.getMessage();
         }
-        return true;
+        return filename;
     }
     
 }

@@ -18,7 +18,7 @@ El portal noticioso “Ole Manolo” desea generar una solución web que permita
 
  + Titulo de la noticia ✔
  + Texto informativo    ✔
- + Galería de imágenes (S)
+ + Galería de imágenes (S) ✔
 
  + Blog de opiniones (G)
 

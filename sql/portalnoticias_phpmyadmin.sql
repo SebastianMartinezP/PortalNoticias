@@ -44,7 +44,7 @@ CREATE TABLE `comentario` (
 
 CREATE TABLE `imagen` (
   `id_imagen` int(11) NOT NULL,
-  `imagen_blob` mediumblob NOT NULL,
+  `imagen_blob` longblob NULL,
   `id_noticia` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -60,7 +60,7 @@ CREATE TABLE `noticia` (
   `subtitulo` varchar(100) NOT NULL,
   `cuerpo` varchar(800) NOT NULL,
   `fecha_emision` datetime NOT NULL,
-  `pdf` mediumblob NOT NULL,
+  `pdf` longblob NULL,
   `autor` varchar(50) DEFAULT NULL,
   `id_tipo_noticia` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
