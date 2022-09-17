@@ -17,11 +17,11 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
-
 import model.connection.*;
 
 public class Noticia
 {
+
     MySqlConnection mysqlConnection = new MySqlConnection();
     Connection connection;
     PreparedStatement preparedStatement;
@@ -71,6 +71,53 @@ public class Noticia
         return list;
     }
     
+    public List<model.dto.Noticia> listOldest()
+    {
+        String sql = "SELECT * FROM Noticia ORDER BY fecha_emision DESC";
+
+        
+        List<model.dto.Noticia> list = new ArrayList<>();
+
+        try
+        {
+
+            this.connection = mysqlConnection.getConection();
+            this.preparedStatement = this.connection.prepareStatement(sql);
+            this.resultSet = this.preparedStatement.executeQuery();
+
+            while (this.resultSet.next())
+            {
+                model.dto.Noticia element = new model.dto.Noticia();
+
+                element.setIdNoticia(this.resultSet.getInt("id_noticia"));
+                element.setIdTipoNoticia(this.resultSet.getInt("id_tipo_noticia"));
+                element.setAutor(this.resultSet.getString("autor"));
+                element.setTitulo(this.resultSet.getString("titulo"));
+                element.setSubtitulo(this.resultSet.getString("subtitulo"));
+                element.setCuerpo(this.resultSet.getString("cuerpo"));
+                element.setFechaEmision(
+                    LocalDateTime.parse(
+                        this.resultSet.getString("fecha_emision"), 
+                        this.dateTimeFormatter
+                    )
+                );
+                element.setImagenes(new model.dao.Imagen().listImagesByNewsId(element.getIdNoticia()));
+                list.add(element);
+            }
+
+        } catch (Exception e)
+        {
+            System.out.println(e.toString());
+            return null;
+        }
+
+        return list;
+    }
+    
+    
+    
+    
+    
     public List<model.dto.Noticia> list(int tipoNoticia)
     {
         String sql = "SELECT * FROM Noticia WHERE id_tipo_noticia = ?";
@@ -112,6 +159,8 @@ public class Noticia
 
         return list;
     }
+    
+    
     
     
     public model.dto.Noticia findNoticia(int idNoticia)
@@ -157,6 +206,7 @@ public class Noticia
     }
     
     
+    
     public List<model.dto.Noticia> listByTitle(String titulo)
     {
         String sql = "SELECT * FROM Noticia WHERE titulo  LIKE \'%" + titulo +"%\'";
@@ -197,6 +247,59 @@ public class Noticia
 
         return list;
     }
+    
+    
+    
+    
+    public List<model.dto.Noticia> listByDate(String year, String month, String day)
+    {
+        // String.format("%02d", intValue);
+        String fecha = 
+                String.format("%04d",Integer.parseInt(year))    + '-' + 
+                String.format("%02d",Integer.parseInt(month))   + '-' + 
+                String.format("%02d",Integer.parseInt(day));
+        String sql = "SELECT * FROM Noticia WHERE fecha_emision LIKE \'" + fecha + "%\'";
+        List<model.dto.Noticia> list = new ArrayList<>();
+
+        try
+        {
+
+            this.connection = mysqlConnection.getConection();
+            this.preparedStatement = this.connection.prepareStatement(sql);
+            this.resultSet = this.preparedStatement.executeQuery();
+
+            while (this.resultSet.next())
+            {
+                model.dto.Noticia element = new model.dto.Noticia();
+
+                element.setIdNoticia(this.resultSet.getInt("id_noticia"));
+                element.setIdTipoNoticia(this.resultSet.getInt("id_tipo_noticia"));
+                element.setAutor(this.resultSet.getString("autor"));
+                element.setTitulo(this.resultSet.getString("titulo"));
+                element.setSubtitulo(this.resultSet.getString("subtitulo"));
+                element.setCuerpo(this.resultSet.getString("cuerpo"));
+                element.setFechaEmision(
+                    LocalDateTime.parse(
+                        this.resultSet.getString("fecha_emision"), 
+                        this.dateTimeFormatter
+                    )
+                );
+                element.setImagenes(new model.dao.Imagen().listImagesByNewsId(element.getIdNoticia()));
+                list.add(element);
+            }
+
+        } catch (Exception e)
+        {
+            System.out.println(e.toString());
+            return null;
+        }
+
+        return list;
+    }
+    
+    
+    
+    
     
     
     public String downloadPdf(model.dto.Noticia noticia)
@@ -241,5 +344,11 @@ public class Noticia
         }
         return filename;
     }
+    
+    
+    
+    
+    
+    
     
 }

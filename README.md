@@ -29,8 +29,8 @@ El portal noticioso “Ole Manolo” desea generar una solución web que permita
 * Dar de baja a un usuario (G)
 
 ### Seba
-* Debe tener la posibilidad de visitar las antiguas noticias (S)
-* Posibilidad de ver las versiones anteriores del portal (búsqueda de una fecha en especial) (S)
+* Debe tener la posibilidad de visitar las antiguas noticias (S) ✔
+* Posibilidad de ver las versiones anteriores del portal (búsqueda de una fecha en especial) (S) ✔
 * Descarga de una noticia en formato PDF (S)
 * Generar espacios para publicidad por categoría ✔
 * Búsqueda de una noticia (S) ✔

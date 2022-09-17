@@ -61,6 +61,7 @@ public class Comentario
 
         } catch (Exception e)
         {
+            
         }
 
         return list;

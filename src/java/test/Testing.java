@@ -41,16 +41,17 @@ public class Testing
 
         /////////////////////////// Noticia (R) TESTED
         
-        //model.dao.Noticia noticia = new model.dao.Noticia();
+        model.dao.Noticia noticia = new model.dao.Noticia();
         //System.out.println(noticia.list());
         //System.out.println(noticia.findNoticia(21));
         //System.out.println(noticia.list(21));
         //System.out.println(noticia.listByTitle("pol"));
-
+        System.out.println(noticia.listByDate("2022", "09", "01"));
+        System.out.println(noticia.listByDate("2023", "09", "01"));
         /////////////////////////// Imagen (R) TESTED
         //model.dao.Imagen daoImagen = new model.dao.Imagen();
         //List<model.dto.Imagen> imagenes = daoImagen.listImagesByNewsId(21);
-      
+        
         //for (Imagen imagen : imagenes)
         //{
         //    System.out.println(imagenes.indexOf(imagen));
