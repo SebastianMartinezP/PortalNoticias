@@ -2,7 +2,11 @@ package model.dao;
 
 
 
+import com.itextpdf.text.BaseColor;
+import com.itextpdf.text.Chunk;
 import com.itextpdf.text.Document;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.FontFactory;
 import com.itextpdf.text.PageSize;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfContentByte;
@@ -113,11 +117,7 @@ public class Noticia
 
         return list;
     }
-    
-    
-    
-    
-    
+
     public List<model.dto.Noticia> list(int tipoNoticia)
     {
         String sql = "SELECT * FROM Noticia WHERE id_tipo_noticia = ?";
@@ -159,10 +159,7 @@ public class Noticia
 
         return list;
     }
-    
-    
-    
-    
+
     public model.dto.Noticia findNoticia(int idNoticia)
     {
         String sql = "SELECT * FROM Noticia WHERE id_noticia = ?";
@@ -205,8 +202,6 @@ public class Noticia
         return noticia;
     }
     
-    
-    
     public List<model.dto.Noticia> listByTitle(String titulo)
     {
         String sql = "SELECT * FROM Noticia WHERE titulo  LIKE \'%" + titulo +"%\'";
@@ -247,10 +242,7 @@ public class Noticia
 
         return list;
     }
-    
-    
-    
-    
+
     public List<model.dto.Noticia> listByDate(String year, String month, String day)
     {
         // String.format("%02d", intValue);
@@ -296,59 +288,5 @@ public class Noticia
 
         return list;
     }
-    
-    
-    
-    
-    
-    
-    public String downloadPdf(model.dto.Noticia noticia)
-    {
-        String path = "C:\\";
-        String filename = "Noticia_" + noticia.getIdNoticia() + '_' + noticia.getFechaEmision().toString() + ".pdf";
-        String sql = "SELECT pdf FROM Noticia WHERE id_noticia = " + noticia.getIdNoticia();
-        try
-        {
-            this.connection = mysqlConnection.getConection();
-            this.preparedStatement = this.connection.prepareStatement(sql);
-            this.resultSet = this.preparedStatement.executeQuery();
-        
-            if(this.resultSet.next())
-            {
-                java.sql.Blob blob = this.resultSet.getBlob("pdf");
-                InputStream inputStream = blob.getBinaryStream();
-                FileOutputStream fileOutputStream = new FileOutputStream(path + filename);
-                
-                int b = 0;
-                while ((b = inputStream.read()) != -1)
-                {         
-                    fileOutputStream.write(b);
-                }
-            }
-            else 
-            {
-                Document document = new Document(PageSize.A4);
-                PdfWriter pdfWriter = PdfWriter.getInstance(document, new FileOutputStream(path + filename));
-                document.open();
-                int[] coords = new int[] {1, 50, 50, 100, 100} ;
-                PdfContentByte canvas = pdfWriter.getDirectContent();
-                document.add(new Paragraph("Hello"));
-                document.close();
-                
-            }
-        
-            
-        } catch (Exception e)
-        {
-            return e.getMessage();
-        }
-        return filename;
-    }
-    
-    
-    
-    
-    
-    
-    
+ 
 }

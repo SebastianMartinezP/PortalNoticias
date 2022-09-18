@@ -78,7 +78,7 @@
                                                 <div class="d-flex">
                                                     <a 
                                                         class="btn btn-danger" 
-                                                        href="ServletController?site=newsFeed&action=downloadPdfById&idNoticia=${n.getIdNoticia()}">
+                                                        href="ServletController?site=newsFeed&action=downloadPdfById&idNoticia=${n.getIdNoticia()}" target="newsFeed">
                                                         <i class="bi bi-download" style="width: 25px; height: 25px;"></i> 
                                                         PDF 
                                                     </a>

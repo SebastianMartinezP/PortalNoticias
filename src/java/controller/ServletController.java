@@ -1,6 +1,5 @@
 package controller;
 
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -8,6 +7,15 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+// Creacion pdf
+import com.itextpdf.text.BaseColor;
+import com.itextpdf.text.Chunk;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.FontFactory;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
+
 
 public class ServletController extends HttpServlet
 {
@@ -114,12 +122,66 @@ public class ServletController extends HttpServlet
                     switch (action)
                     {
                         case "downloadPdfById":
+                            
+                            // rescatamos la noticia, creamos el nombre del pdf
+                            
                             daoNoticia = new model.dao.Noticia();
-
                             int idNoticia = Integer.parseInt(request.getParameter("idNoticia"));
                             model.dto.Noticia noticia = daoNoticia.findNoticia(idNoticia);
-                            String filename = daoNoticia.downloadPdf(noticia);
+                            
+                            String filename = 
+                                    "Noticia_" + noticia.getIdNoticia() + '_' 
+                                    + noticia.getFechaEmision().toString() + ".pdf";
+                            
+                            
+                            // configuramos la respuesta del Servlet
+                            
+                            response.setContentType("application/pdf");
+                            response.setHeader("Content-disposition", "attachment; filename=" + filename);
 
+                            
+                            // creamos el documento
+                            
+                            Document document = new Document();
+                            PdfWriter.getInstance(document, response.getOutputStream());
+
+                            document.open();
+                            
+                            
+                            document.add(
+                                new Paragraph(
+                                    new Chunk(noticia.getAutor(), 
+                                        FontFactory.getFont(FontFactory.HELVETICA, 10, BaseColor.LIGHT_GRAY)
+                                    )
+                                )
+                            );
+                            
+                            document.add(
+                                new Paragraph(
+                                    new Chunk(noticia.getTitulo(), 
+                                        FontFactory.getFont(FontFactory.HELVETICA_BOLD, 18, BaseColor.BLACK)
+                                    )
+                                )
+                                
+                            );
+                            
+                            document.add(
+                                    new Paragraph(
+                                    new Chunk(noticia.getSubtitulo(), 
+                                        FontFactory.getFont(FontFactory.HELVETICA_OBLIQUE, 15, BaseColor.BLACK)
+                                    )
+                                )
+                            );
+                            
+                            document.add(
+                                    new Paragraph(
+                                    new Chunk(noticia.getCuerpo(), 
+                                        FontFactory.getFont(FontFactory.HELVETICA, 12, BaseColor.BLACK)
+                                    )
+                                )
+                            );
+                            
+                            document.close();
                             break;
 
                         default:
