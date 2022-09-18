@@ -15,9 +15,7 @@ import com.itextpdf.text.Document;
 import com.itextpdf.text.FontFactory;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
-import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
-import model.dao.Noticia;
 
 public class ServletController extends HttpServlet
 {

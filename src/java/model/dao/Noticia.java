@@ -36,7 +36,7 @@ public class Noticia
     
     public List<model.dto.Noticia> list()
     {
-        String sql = "SELECT * FROM Noticia";
+        String sql = "SELECT * FROM Noticia order by fecha_emision DESC";
         List<model.dto.Noticia> list = new ArrayList<>();
 
         try
@@ -77,7 +77,7 @@ public class Noticia
     
     public List<model.dto.Noticia> listOldest()
     {
-        String sql = "SELECT * FROM Noticia ORDER BY fecha_emision DESC";
+        String sql = "SELECT * FROM Noticia ORDER BY fecha_emision ASC";
 
         
         List<model.dto.Noticia> list = new ArrayList<>();
@@ -120,7 +120,7 @@ public class Noticia
 
     public List<model.dto.Noticia> list(int tipoNoticia)
     {
-        String sql = "SELECT * FROM Noticia WHERE id_tipo_noticia = ?";
+        String sql = "SELECT * FROM Noticia WHERE id_tipo_noticia = ? order by fecha_emision DESC";
         List<model.dto.Noticia> list = new ArrayList<>();
 
         try
@@ -162,7 +162,7 @@ public class Noticia
 
     public model.dto.Noticia findNoticia(int idNoticia)
     {
-        String sql = "SELECT * FROM Noticia WHERE id_noticia = ?";
+        String sql = "SELECT * FROM Noticia WHERE id_noticia = ? order by fecha_emision DESC";
         model.dto.Noticia noticia = null;
 
         try
@@ -204,7 +204,7 @@ public class Noticia
     
     public List<model.dto.Noticia> listByTitle(String titulo)
     {
-        String sql = "SELECT * FROM Noticia WHERE titulo  LIKE \'%" + titulo +"%\'";
+        String sql = "SELECT * FROM Noticia WHERE titulo  LIKE \'%" + titulo +"%\' order by fecha_emision DESC";
         List<model.dto.Noticia> list = new ArrayList<>();
 
         try
@@ -250,7 +250,7 @@ public class Noticia
                 String.format("%04d",Integer.parseInt(year))    + '-' + 
                 String.format("%02d",Integer.parseInt(month))   + '-' + 
                 String.format("%02d",Integer.parseInt(day));
-        String sql = "SELECT * FROM Noticia WHERE fecha_emision LIKE \'" + fecha + "%\'";
+        String sql = "SELECT * FROM Noticia WHERE fecha_emision LIKE \'" + fecha + "%\' order by fecha_emision DESC";
         List<model.dto.Noticia> list = new ArrayList<>();
 
         try
