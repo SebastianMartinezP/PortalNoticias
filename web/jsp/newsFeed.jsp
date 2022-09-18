@@ -33,7 +33,7 @@
                         <c:forEach var="n" items="${noticias}">
                             <div class="card card-iframe">
                                 <div class="bg-image hover-overlay">
-                                    <div class="bg-image rounded-6">
+                                    <div class="bg-image rounded-6">  
                                         <img src="img/placeholder.jpg" class="w-35" />
                                         <!-- Mask -->
                                         <div class="mask" style="background-color: rgba(0, 0, 0, 0.6)">

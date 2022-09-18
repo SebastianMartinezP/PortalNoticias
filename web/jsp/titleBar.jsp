@@ -47,5 +47,6 @@
         <h5>Portal de noticias Online</h5>
         <hr class="hr hr-blurry" />
     </div>
+    
 </body>
 </html>

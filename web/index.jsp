@@ -40,6 +40,10 @@
                 <div class="col-sm-2"></div>
                 <div class="col-lg-8">
                     <div class="d-flex justify-content-center">
+                        <a href="ServletController?site=index&action=downloadReport" target="newsFeed"
+                           class="btn btn-dark shadow-0">
+                            <i class="bi bi-file-earmark-bar-graph"></i>
+                        </a>
                         <div class="vr mx-2" style="height: 30px;"></div>
 
                         <div class="btn-group d-flex shadow-0">
@@ -49,9 +53,9 @@
                                     <i class="bi bi-search"></i>
                                 </button>
                                 <a href="ServletController?site=index&action=listOldestNews" target="newsFeed"
-                               class="btn btn-dark shadow-0">
-                                <i class="bi bi-arrow-return-left"></i>
-                            </a>
+                                   class="btn btn-dark shadow-0">
+                                    <i class="bi bi-arrow-return-left"></i>
+                                </a>
                             </form>
 
 
@@ -68,10 +72,11 @@
                                 <i class="bi bi-calendar"></i>
                             </button>
                         </form>
-                        
+
                         <div class="vr mx-2" style="height: 30px;"></div>
                     </div>
                 </div>
+
 
                 <div class="d-flex justify-content-center">
                     <div class="btn-group shadow-0">
@@ -91,13 +96,15 @@
                            class="btn btn-light shadow-0">
                             <h6>MUJER</h6></a>
                         <a href="ServletController?site=index&action=getNoticiaByTipoNoticia&tipoNoticia=noticias" target="newsFeed" 
-                           class="btn btn-light shadow-0">
+                           class="btn btn-light shadow-0 me-2">
                             <h6>NOTICIAS</h6></a>
+
                     </div>
 
 
 
                 </div>
+
             </div>    
             <div class="col-sm-2"></div>
         </div>  

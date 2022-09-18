@@ -15,7 +15,9 @@ import com.itextpdf.text.Document;
 import com.itextpdf.text.FontFactory;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
-
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import model.dao.Noticia;
 
 public class ServletController extends HttpServlet
 {
@@ -42,6 +44,116 @@ public class ServletController extends HttpServlet
                 case "index":
                     switch (action)
                     {
+                        // descargar informe / reporte
+                        case "downloadReport":
+                            // rescatamos la noticia, creamos el nombre del pdf
+                            daoNoticia = new model.dao.Noticia();
+                            
+                            List<model.dto.Noticia> oldest = daoNoticia.listOldest();
+                            List<model.dto.Noticia> newest = daoNoticia.list();
+                            /* Rescatar usuario y su cantidad de opiniones */
+                            
+                            
+                            String filename = "Reporte_PortalNoticias.pdf";
+                            
+                            
+                            // configuramos la respuesta del Servlet
+                            
+                            response.setContentType("application/pdf");
+                            response.setHeader("Content-disposition", "attachment; filename=" + filename);
+
+                            
+                            // creamos el documento
+                            
+                            Document document = new Document();
+                            PdfWriter.getInstance(document, response.getOutputStream());
+
+                            document.open();
+                            
+                            document.add(
+                                new Paragraph(
+                                    new Chunk("Informe", 
+                                        FontFactory.getFont(FontFactory.HELVETICA_BOLD, 18, BaseColor.BLACK)
+                                    )
+                                )
+                                
+                            );
+                            
+                            // Noticias mas antiguas
+                            document.add(
+                                    new Paragraph(
+                                    new Chunk("Noticias mas antiguas", 
+                                        FontFactory.getFont(FontFactory.HELVETICA_OBLIQUE, 15, BaseColor.BLACK)
+                                    )
+                                )
+                            );
+                            
+                            
+                            PdfPTable tableOldest = new PdfPTable(3);
+                            tableOldest.addCell(new Paragraph("ID"));
+                            tableOldest.addCell(new Paragraph("Titulo"));
+                            tableOldest.addCell(new Paragraph("Fecha emision"));
+                            for (int i = 0; i < 2; i++)
+                            {
+                                tableOldest.addCell(Integer.toString(i + 1));
+                                tableOldest.addCell(oldest.get(i).getTitulo());
+                                tableOldest.addCell(oldest.get(i).getFechaEmision().toString());
+                            }
+                            document.add(tableOldest);
+                            
+                            
+                            
+                            // Noticias mas nuevas
+                            document.add(
+                                    new Paragraph(
+                                    new Chunk("Noticias mas nuevas", 
+                                        FontFactory.getFont(FontFactory.HELVETICA_OBLIQUE, 15, BaseColor.BLACK)
+                                    )
+                                )
+                            );
+                            
+                            PdfPTable tableNewest = new PdfPTable(3);
+                            tableNewest.addCell(new Paragraph("ID"));
+                            tableNewest.addCell(new Paragraph("Titulo"));
+                            tableNewest.addCell(new Paragraph("Fecha emision"));
+                            for (int i = 0; i < 2; i++)
+                            {
+                                tableNewest.addCell(Integer.toString(i + 1));
+                                tableNewest.addCell(newest.get(i).getTitulo());
+                                tableNewest.addCell(newest.get(i).getFechaEmision().toString());
+                            }
+                            document.add(tableNewest);
+                            
+                            
+                            
+                            
+                            // Usuario con mas opiniones
+                            document.add(
+                                    new Paragraph(
+                                    new Chunk("Usuario con mas opiniones", 
+                                        FontFactory.getFont(FontFactory.HELVETICA_OBLIQUE, 15, BaseColor.BLACK)
+                                    )
+                                )
+                            );
+                            
+                            PdfPTable tableUser = new PdfPTable(3);
+                            tableUser.addCell(new Paragraph("ID"));
+                            tableUser.addCell(new Paragraph("Usuario"));
+                            tableUser.addCell(new Paragraph("Cantidad opiniones"));
+                            
+                            /*
+                            tableUser.addCell(usuario.getIdUsuario().toString());
+                            tableUser.addCell(usuario.getNickname());
+                            tableUser.addCell(Integer.toString(cantComentarios));
+                            document.add(tableUser);
+                            */
+                            
+                            document.close();
+                            break;
+                        
+                        
+                        
+                        
                         // cambiar el orden de las busquedas
                         case "listOldestNews":
                             daoNoticia = new model.dao.Noticia();
