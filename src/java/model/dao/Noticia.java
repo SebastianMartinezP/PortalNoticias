@@ -1,18 +1,5 @@
 package model.dao;
 
-
-
-import com.itextpdf.text.BaseColor;
-import com.itextpdf.text.Chunk;
-import com.itextpdf.text.Document;
-import com.itextpdf.text.Font;
-import com.itextpdf.text.FontFactory;
-import com.itextpdf.text.PageSize;
-import com.itextpdf.text.Paragraph;
-import com.itextpdf.text.pdf.PdfContentByte;
-import com.itextpdf.text.pdf.PdfWriter;
-import java.io.FileOutputStream;
-import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -63,6 +50,8 @@ public class Noticia
                     )
                 );
                 element.setImagenes(new model.dao.Imagen().listImagesByNewsId(element.getIdNoticia()));
+                element.setComentarios(new model.dao.Comentario().listByIdNoticia(element.getIdNoticia()));
+                
                 list.add(element);
             }
 
@@ -106,6 +95,7 @@ public class Noticia
                     )
                 );
                 element.setImagenes(new model.dao.Imagen().listImagesByNewsId(element.getIdNoticia()));
+                element.setComentarios(new model.dao.Comentario().listByIdNoticia(element.getIdNoticia()));
                 list.add(element);
             }
 
@@ -148,6 +138,7 @@ public class Noticia
                     )
                 );
                 element.setImagenes(new model.dao.Imagen().listImagesByNewsId(element.getIdNoticia()));
+                element.setComentarios(new model.dao.Comentario().listByIdNoticia(element.getIdNoticia()));
                 list.add(element);
             }
 
@@ -190,6 +181,7 @@ public class Noticia
                     )
                 );
                 element.setImagenes(new model.dao.Imagen().listImagesByNewsId(element.getIdNoticia()));
+                element.setComentarios(new model.dao.Comentario().listByIdNoticia(element.getIdNoticia()));
                 noticia = element;
             }
 
@@ -231,6 +223,7 @@ public class Noticia
                     )
                 );
                 element.setImagenes(new model.dao.Imagen().listImagesByNewsId(element.getIdNoticia()));
+                element.setComentarios(new model.dao.Comentario().listByIdNoticia(element.getIdNoticia()));
                 list.add(element);
             }
 
@@ -277,6 +270,7 @@ public class Noticia
                     )
                 );
                 element.setImagenes(new model.dao.Imagen().listImagesByNewsId(element.getIdNoticia()));
+                element.setComentarios(new model.dao.Comentario().listByIdNoticia(element.getIdNoticia()));
                 list.add(element);
             }
 

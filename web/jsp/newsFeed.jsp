@@ -183,11 +183,84 @@
                                                     </div>
 
 
+
+
+                                                    <!-- Caja de comentarios -->
+
+                                                    <div class="card m-3" style="max-width: 900px;">
+                                                        <div class="card-header">
+                                                            <h3 class="me-3">COMENTARIOS</h3>
+                                                        </div>
+                                                        <div class="card-body">
+
+
+                                                            <!-- Comentarios -->
+
+                                                            <div class="d-flex justify-content-between">
+                                                                <ul class="list-group list-group-light">
+
+                                                                    <c:forEach var="c" items="${n.comentarios}">
+                                                                        <c:choose>
+                                                                            <c:when test="${c.getIsEnabled() == true}">
+                                                                                <li class="list-group-item mx-3" style="max-width: 800px;">
+                                                                                    <div class="card">
+                                                                                        <div class="card-body">
+                                                                                            <div class="d-flex">
+                                                                                                <h4 class="me-3">${c.getUsuario().getNickname()}</h4>
+
+                                                                                            </div>
+                                                                                            <div class="d-flex text-wrap">
+                                                                                                <p>${c.getContenido()}</p>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="card-footer text-muted">
+                                                                                            <a class="btn btn-dark shadow-0 btn-rounded" href="#!" target="newsFeed">
+                                                                                                <i class="bi bi-flag-fill"></i></i>
+                                                                                            </a>
+                                                                                        </div>
+                                                                                    </div>
+
+
+                                                                                </li>
+                                                                            </c:when>
+
+                                                                            <c:otherwise>
+                                                                                <li class="list-group-item mx-3" style="max-width: 800px;">
+                                                                                    <div class="card">
+                                                                                        <div class="card-body">
+                                                                                            <div class="d-flex">
+                                                                                                <h4 class="me-3">${c.getUsuario().getNickname()} <span class="badge badge-danger">Banned</span></h4>
+
+                                                                                            </div>
+                                                                                            <div class="placeholder-glow">
+                                                                                                <p>
+                                                                                                    <span class="placeholder col-7"></span>
+                                                                                                    <span class="placeholder col-4"></span>
+                                                                                                    <span class="placeholder col-4"></span>
+                                                                                                    <span class="placeholder col-6"></span>
+                                                                                                    <span class="placeholder col-8"></span>
+                                                                                                </p>
+                                                                                            </div>
+
+                                                                                        </div>
+                                                                                        <div class="card-footer text-muted">
+                                                                                            <a class="btn btn-dark shadow-0 btn-rounded" href="#!" target="newsFeed">
+                                                                                                <i class="bi bi-flag-fill"></i></i>
+                                                                                            </a>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </li>
+                                                                            </c:otherwise>
+                                                                        </c:choose>
+                                                                    </c:forEach>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
                                                     <div class="col-lg-1 bg-light">
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="modal-footer">
                                             </div>
                                         </div>
                                     </div>

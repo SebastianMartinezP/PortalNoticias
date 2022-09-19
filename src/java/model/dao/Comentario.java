@@ -56,6 +56,8 @@ public class Comentario
                 element.setIdUsuario(this.resultSet.getInt("id_usuario"));
                 element.setIsEnabled(this.resultSet.getBoolean("is_enabled"));
 
+                element.setUsuario(new model.dao.Usuario().listByIdUsuario(element.getIdUsuario()));
+                
                 list.add(element);
             }
 
@@ -66,6 +68,42 @@ public class Comentario
 
         return list;
     }
+    
+    public List<model.dto.Comentario> listByIdNoticia(int idNoticia)
+    {
+        String sql = "SELECT * FROM comentario WHERE id_noticia = " + Integer.toString(idNoticia) ;
+        List<model.dto.Comentario> list = new ArrayList<>();
+
+        try
+        {
+
+            this.connection = mysqlConnection.getConection();
+            this.preparedStatement = this.connection.prepareStatement(sql);
+            this.resultSet = this.preparedStatement.executeQuery();
+
+            while (this.resultSet.next())
+            {
+                model.dto.Comentario element = new model.dto.Comentario();
+
+                element.setIdUsuario(this.resultSet.getInt("id_usuario"));
+                element.setContenido(this.resultSet.getString("contenido"));
+                element.setIdNoticia(this.resultSet.getInt("id_noticia"));
+                element.setIdUsuario(this.resultSet.getInt("id_usuario"));
+                element.setIsEnabled(this.resultSet.getBoolean("is_enabled"));
+
+                element.setUsuario(new model.dao.Usuario().listByIdUsuario(element.getIdUsuario()));
+                list.add(element);
+            }
+
+        } catch (Exception e)
+        {
+            
+        }
+
+        return list;
+    }
+    
+    
     
     public String UpdateIsEnabledByUser(model.dto.Usuario user, boolean newState)
     {

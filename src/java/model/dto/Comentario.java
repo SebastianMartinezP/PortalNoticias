@@ -7,7 +7,9 @@ public class Comentario
     private int idNoticia;
     private int idUsuario;
     private boolean isEnabled;
-
+    
+    private model.dto.Usuario usuario;
+    
     public Comentario()
     {
     }
@@ -21,6 +23,12 @@ public class Comentario
         this.isEnabled = isEnabled;
     }
 
+    public Usuario getUsuario()
+    {
+        return usuario;
+    }
+
+    
     public int getIdComentario()
     {
         return idComentario;
@@ -46,6 +54,12 @@ public class Comentario
         return isEnabled;
     }
 
+    public void setUsuario(Usuario usuario)
+    {
+        this.usuario = usuario;
+    }
+
+     
     public void setIdComentario(int idComentario)
     {
         this.idComentario = idComentario;

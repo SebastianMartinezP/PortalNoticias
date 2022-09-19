@@ -16,7 +16,9 @@ public class Noticia
     private Blob pdf;
     private String autor;
     private List<model.dto.Imagen> imagenes;
-
+    private List<model.dto.Comentario> comentarios;
+    
+    
     public Noticia()
     {
     }
@@ -32,6 +34,10 @@ public class Noticia
         this.autor = autor;
     }
 
+    public List<Comentario> getComentarios()
+    {
+        return comentarios;
+    }
     public int getIdNoticia()
     {
         return idNoticia;
@@ -72,6 +78,10 @@ public class Noticia
         return autor;
     }
 
+    public void setComentarios(List<Comentario> comentarios)
+    {
+        this.comentarios = comentarios;
+    }
     public void setImagenes(List<Imagen> imagenes)
     {
         this.imagenes = imagenes;

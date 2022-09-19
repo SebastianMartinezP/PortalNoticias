@@ -64,6 +64,34 @@ public class Usuario
         return list;
     }
     
+    
+    
+    public model.dto.Usuario listByIdUsuario( int idUsuario)
+    {
+        String sql = "SELECT * FROM usuario where id_usuario = " + Integer.toString(idUsuario);
+        model.dto.Usuario element = new model.dto.Usuario();
+        try
+        {
+
+            this.connection = mysqlConnection.getConection();
+            this.preparedStatement = this.connection.prepareStatement(sql);
+            this.resultSet = this.preparedStatement.executeQuery();
+
+            if (this.resultSet.next())
+            {
+                element.setIdUsuario(this.resultSet.getInt("id_usuario"));
+                element.setNickname(this.resultSet.getString("nickname"));
+                element.setPassword(this.resultSet.getString("password"));
+                element.setIsEnabled(this.resultSet.getBoolean("is_enabled"));
+            }
+
+        } catch (Exception e)
+        {
+        }
+
+        return element;
+    }
+    
     public boolean Update(model.dto.Usuario user)
     {
         String sql = 
