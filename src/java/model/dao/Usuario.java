@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import model.connection.*;
 
@@ -102,4 +104,77 @@ public class Usuario
         }
         return "Update ok";
     }
+    public model.dto.Usuario login(String nickname, String pass){
+        model.dto.Usuario u = new model.dto.Usuario();
+        String sql = "SELECT * FROM usuario WHERE nickname = ? and password = ?";
+        try {
+            connection = mysqlConnection.getConection();
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, nickname);
+            preparedStatement.setString(2, pass);
+            resultSet = preparedStatement.executeQuery();
+            
+            while(resultSet.next()) {            
+                u.setIdUsuario(resultSet.getInt("id_usuario"));
+                u.setNickname(resultSet.getString("nickname"));
+                u.setPassword(resultSet.getString("pass"));
+                u.setIsEnabled(this.resultSet.getBoolean("is_enabled"));
+                
+            }
+        } catch (Exception e) {
+            
+        }
+        return u;
+    }
+     public Boolean login2(String nickname, String pass){
+      
+          model.dto.Usuario u = new model.dto.Usuario();
+        String sql = "SELECT * FROM usuario WHERE nickname = ? and password = ?";
+        try {
+            connection = mysqlConnection.getConection();
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, nickname);
+            preparedStatement.setString(2, pass);
+            resultSet = preparedStatement.executeQuery();
+            
+            while(resultSet.next()) {            
+                u.setIdUsuario(resultSet.getInt("id_usuario"));
+                u.setNickname(resultSet.getString("nickname"));
+                u.setPassword(resultSet.getString("pass"));
+                u.setIsEnabled(this.resultSet.getBoolean("is_enabled"));
+                return true;
+            }
+        } catch (Exception e) {
+            
+        }
+        return false;
+    }
+    /*public Usuario existeUsuario (String nickname, String password)throws SQLException,
+            ClassNotFoundException{
+     preparedStatement = null;   
+     resultSet = null;
+     connection = mysqlConnection.getConection();
+     
+     String sql = "SELECT * FROM users WHERE nickname = ? and password = ?";
+     
+        {
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, nickname);
+            preparedStatement.setString(2, password);
+            resultSet = preparedStatement.executeQuery();
+            
+            Usuario usuario = null;
+          
+            if(resultSet.next())
+            {
+                usuario = new Usuario();
+                usuario.setNickname(nickname);
+                usuario.setPassword(password);
+            }
+            connection.close();
+            return usuario;
+        
+    }*/
+
+    
 }
