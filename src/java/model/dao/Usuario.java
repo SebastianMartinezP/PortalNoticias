@@ -3,6 +3,7 @@ package model.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -203,6 +204,50 @@ public class Usuario
             return usuario;
         
     }*/
+     
+     
+     public model.dto.Usuario listMostComments()
+    {
+        String sql = 
+            "SELECT " +
+            "COUNT(id_comentario) AS cuenta, " +
+            "id_usuario " +
+            "FROM comentario " +
+            "GROUP BY id_usuario " +
+            "ORDER BY CUENTA DESC " +
+            "LIMIT 1;";
+        String sql2 = "SELECT COUNT(*) FROM comentario WHERE id_usuario = ?";
+        model.dto.Usuario element = new model.dto.Usuario();
+        
+        try
+        {
+            this.connection = mysqlConnection.getConection();
+            this.preparedStatement = this.connection.prepareStatement(sql);
+            this.resultSet = this.preparedStatement.executeQuery();
+            ResultSetMetaData resultSetMetaData = this.resultSet.getMetaData();
+            
+            if (this.resultSet.next())
+            {
+                element = listByIdUsuario(this.resultSet.getInt("id_usuario"));
+                //element.setCountComentarios(this.resultSet.getInt("cuenta"));
+            }
+            
+            this.connection = mysqlConnection.getConection();
+            this.preparedStatement = this.connection.prepareStatement(sql2);
+            preparedStatement.setInt(1, element.getIdUsuario());
+            this.resultSet = this.preparedStatement.executeQuery();
+            
+            if (this.resultSet.next())
+            {
+                element.setCountComentarios(this.resultSet.getInt(1));
+            }
+            
+        } catch (Exception e)
+        {
+            System.out.println(e.toString() + ", " + e.getMessage()); 
+        }
+        return element;
+    }
 
     
 }

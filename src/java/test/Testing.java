@@ -56,7 +56,7 @@ public class Testing
         /////////////////////////// Noticia (R) TESTED
         
 
-        model.dao.Noticia noticia = new model.dao.Noticia();
+        //model.dao.Noticia noticia = new model.dao.Noticia();
         //System.out.println(noticia.list());
         //System.out.println(noticia.findNoticia(21));
         //System.out.println(noticia.list(21));
@@ -83,7 +83,8 @@ public class Testing
 
         /////////////////////////// Comentario (CRU)
         
-        
+        System.out.println(new model.dao.Usuario().listMostComments());
+
         
     }
 }

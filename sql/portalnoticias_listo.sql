@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-09-2022 a las 05:40:34
+-- Tiempo de generación: 20-09-2022 a las 17:16:49
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.1.6
 
@@ -63,9 +63,10 @@ INSERT INTO `comentario` (`id_comentario`, `contenido`, `is_enabled`, `id_notici
 (21, 'Esto es un comentario de prueba, numero 21', b'0', 3, 5),
 (22, 'Esto es un comentario de prueba, numero 22', b'0', 3, 6),
 (23, 'Esto es un comentario de prueba, numero 23', b'0', 4, 7),
-(24, 'Esto es un comentario de prueba, numero 24', b'0', 4, 8);
+(24, 'Esto es un comentario de prueba, numero 24', b'0', 4, 8),
 (25, 'Esto es un comentario de prueba, numero 1.1', b'1', 1, 1),
-(26, 'Esto es un comentario de prueba, numero 1.2', b'1', 1, 1),
+(26, 'Esto es un comentario de prueba, numero 1.2', b'1', 1, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -260,7 +261,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `comentario`
 --
 ALTER TABLE `comentario`
-  MODIFY `id_comentario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id_comentario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT de la tabla `imagen`

@@ -59,7 +59,7 @@ public class ServletController extends HttpServlet
                             
                             List<model.dto.Noticia> oldest = daoNoticia.listOldest();
                             List<model.dto.Noticia> newest = daoNoticia.list();
-                            /* Rescatar usuario y su cantidad de opiniones */
+                            model.dto.Usuario mostComments = new model.dao.Usuario().listMostComments();
                             
                             
                             String filename = "Reporte_PortalNoticias.pdf";
@@ -149,12 +149,11 @@ public class ServletController extends HttpServlet
                             tableUser.addCell(new Paragraph("Usuario"));
                             tableUser.addCell(new Paragraph("Cantidad opiniones"));
                             
-                            /*
-                            tableUser.addCell(usuario.getIdUsuario().toString());
-                            tableUser.addCell(usuario.getNickname());
-                            tableUser.addCell(Integer.toString(cantComentarios));
+                            
+                            tableUser.addCell(Integer.toString(mostComments.getIdUsuario()));
+                            tableUser.addCell(mostComments.getNickname());
+                            tableUser.addCell(Integer.toString(mostComments.getCountComentarios()));
                             document.add(tableUser);
-                            */
                             
                             document.close();
                             break;

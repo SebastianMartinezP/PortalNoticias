@@ -6,7 +6,8 @@ public class Usuario
     private String nickname;
     private String password;
     private boolean isEnabled;
-
+    private int countComentarios;
+    
     public Usuario()
     {
     }
@@ -17,6 +18,15 @@ public class Usuario
         this.nickname = nickname;
         this.password = password;
         this.isEnabled = isEnabled;
+    }
+
+    public Usuario(int idUsuario, String nickname, String password, boolean isEnabled, int countComentarios)
+    {
+        this.idUsuario = idUsuario;
+        this.nickname = nickname;
+        this.password = password;
+        this.isEnabled = isEnabled;
+        this.countComentarios = countComentarios;
     }
 
     public int getIdUsuario()
@@ -39,6 +49,16 @@ public class Usuario
         return isEnabled;
     }
 
+    public int getCountComentarios()
+    {
+        return countComentarios;
+    }
+
+    public void setCountComentarios(int countComentarios)
+    {
+        this.countComentarios = countComentarios;
+    }
+
     public void setIdUsuario(int idUsuario)
     {
         this.idUsuario = idUsuario;
@@ -59,12 +79,14 @@ public class Usuario
         this.isEnabled = isEnabled;
     }
 
+    
+    //Prueba repo
+
     @Override
     public String toString()
     {
-        return "Usuario{" + "idUsuario=" + idUsuario + ", nickname=" + nickname + ", password=" + password + ", isEnabled=" + isEnabled + '}';
+        return "Usuario{" + "idUsuario=" + idUsuario + ", nickname=" + nickname + ", password=" + password + ", isEnabled=" + isEnabled + ", countComentarios=" + countComentarios + '}';
     }
-    //Prueba repo
     
     
 }
