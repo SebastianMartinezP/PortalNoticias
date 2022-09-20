@@ -62,7 +62,7 @@
                                         <a href="#!"
                                            class="btn btn-dark ripple" 
                                            data-mdb-toggle="modal" data-mdb-target="#exampleModal_${n.getIdNoticia()}">
-                                            Leer más ${n.getIdNoticia()}
+                                            Leer más
                                         </a>
                                     </div>
 
