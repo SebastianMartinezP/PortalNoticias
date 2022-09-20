@@ -32,15 +32,15 @@
                     <iframe id="titleBar" name="titleBar" class="titlebar-iframe" src="jsp/titleBar.jsp" frameborder="0"></iframe>
                 </div>                         
             </div>
-            
+
             <!-- Barra Usuario-->
             <div >
-            <div class="mt-3" style="display:flex; justify-content:flex-end; width:100%; padding:0;"> 
-                 <a href="ServletController?site=index&action=ingresar" target="newsFeed" class="btn btn-light">Ingresar</a>   
-                 <div></div>               
-               </div>
+                <div class="mt-3" style="display:flex; justify-content:flex-end; width:100%; padding:0;"> 
+                    <a href="ServletController?site=index&action=ingresar" target="newsFeed" class="btn btn-light">Ingresar</a>   
+                    <div></div>               
+                </div>
             </div>
-            
+
             <!-- Barra de navegacion-->
 
             <div class="row mb-3">
@@ -85,27 +85,6 @@
                     </div>
                 </div>
 
-                        <form class="d-flex" action="ServletController?site=index&action=searchNoticiaByTitulo" method="POST" target="newsFeed">
-                            <input id="txtSearch" name="txtSearch" class="form-control me-2" type="text" placeholder="Buscar Noticias">
-                            <button class="btn btn-dark" type="submit" id="action" name="action" value="search">
-                                <i class="bi bi-search"></i>
-                            </button>   
-                            <div></div>
-                                                  
-                           
-                        
-                        </form>
-                        
-                    </div>
-                </div>    
-                <div class="col-sm-2"></div>
-            </div>  
-            
-            <!-- Feed de noticias -->
-            <iframe class="newsfeed-iframe" id="newsFeed" name="newsFeed"></iframe>
-            
-        </div>
-
 
                 <div class="d-flex justify-content-center">
                     <div class="btn-group shadow-0">
@@ -129,14 +108,27 @@
                             <h6>NOTICIAS</h6></a>
                     </div>
                 </div>
-            </div>    
-            <div class="col-sm-2"></div>
-        </div>  
 
-        <!-- Feed de noticias -->
-        <iframe class="newsfeed-iframe" id="newsFeed" name="newsFeed"></iframe>
+            </div>
+        </div>    
+        <div class="col-sm-2"></div>
+    </div>  
 
-    </div>
+    <!-- Feed de noticias -->
+    <iframe class="newsfeed-iframe" id="newsFeed" name="newsFeed"></iframe>
+
+</div>
+
+
+
+</div>    
+<div class="col-sm-2"></div>
+</div>  
+
+<!-- Feed de noticias -->
+<iframe class="newsfeed-iframe" id="newsFeed" name="newsFeed"></iframe>
+
+</div>
 
 
 

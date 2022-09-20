@@ -18,8 +18,6 @@ import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.itextpdf.text.pdf.PdfPTable;
 
-import model.dto.Noticia;
-import model.dto.TipoNoticia;
 import model.dto.Usuario;
 
 
