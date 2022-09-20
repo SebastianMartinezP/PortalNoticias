@@ -38,4 +38,4 @@ El portal noticioso “Ole Manolo” desea generar una solución web que permita
 ### Generar Informe:
  + Noticias mas nuevas ( 2 ) (S) ✔
  + Noticias mas antiguas ( 2 ) (S) ✔
- + Usuarios con mas opiniones
+ + Usuarios con mas opiniones ✔
