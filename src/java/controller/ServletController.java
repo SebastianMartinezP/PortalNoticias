@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+
 // Creacion pdf
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Chunk;
@@ -16,6 +17,11 @@ import com.itextpdf.text.FontFactory;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.itextpdf.text.pdf.PdfPTable;
+
+import model.dto.Noticia;
+import model.dto.TipoNoticia;
+import model.dto.Usuario;
+
 
 public class ServletController extends HttpServlet
 {
@@ -27,9 +33,15 @@ public class ServletController extends HttpServlet
         {
 
             // DAOs
-            model.dao.TipoNoticia daoTipoNoticia;
-            model.dao.Noticia daoNoticia;
 
+            //model.dao.TipoNoticia daoTipoNoticia;
+            //model.dao.Noticia daoNoticia;
+
+            model.dao.TipoNoticia daoTipoNoticia = new model.dao.TipoNoticia();
+            model.dao.Noticia daoNoticia = new model.dao.Noticia();
+           
+            
+            
             // Parameters 
             String site = request.getParameter("site");
             String action = request.getParameter("action");
@@ -195,6 +207,7 @@ public class ServletController extends HttpServlet
 
                             break;
 
+
                         // cargar pagina principal por tipos de noticias
                         case "searchNoticiaByDate":
                             daoNoticia = new model.dao.Noticia();
@@ -225,6 +238,48 @@ public class ServletController extends HttpServlet
 
                         default:
                             throw new AssertionError();
+
+                        
+                        case "Login":
+                            String userl = request.getParameter("txtnickname");
+                            String passl = request.getParameter("txtpassword");
+                            model.dao.Usuario userlogin = new model.dao.Usuario();      
+                            Usuario usuariologin = userlogin.login(userl,passl);
+                            try {
+
+                                if (usuariologin != null) {
+                                                                  
+                                   request.getRequestDispatcher("jsp/newsFeed.jsp").forward(request, response);
+                                   break;
+                                   
+                                } else {
+                                    String message = "Invalid email/password";
+                                    request.setAttribute("message", message);
+                                }                         
+                            } catch (Exception ex) {
+                                throw new ServletException(ex);
+                            }
+
+                        case "ingresar":
+                            request.getRequestDispatcher("jsp/Login.jsp").forward(request, response);
+                            break;
+                            
+                        case "nuevoRegistro":
+                            request.getRequestDispatcher("jsp/Registro.jsp").forward(request, response);
+                            break;
+                            
+                        case "GuardarUsuario":
+                            String user = request.getParameter("txtnicknamenu");
+                            String pass = request.getParameter("txtpasswordnu");
+                            
+                            model.dao.Usuario usuarioHandler = new model.dao.Usuario();      
+                            model.dto.Usuario usuario = new model.dto.Usuario(1,user,pass,(Boolean.TRUE));                          
+                            usuarioHandler.Save(usuario);
+                            
+                            request.getRequestDispatcher("jsp/Login.jsp").forward(request, response);
+                            break;
+                      
+
                     }
                     break;
 
