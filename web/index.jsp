@@ -30,8 +30,15 @@
             <div class="row">
                 <div class="mt-3">
                     <iframe id="titleBar" name="titleBar" class="titlebar-iframe" src="jsp/titleBar.jsp" frameborder="0"></iframe>
-                </div>
+                </div>                         
+            </div>
 
+            <!-- Barra Usuario-->
+            <div >
+                <div class="mt-3" style="display:flex; justify-content:flex-end; width:100%; padding:0;"> 
+                    <a href="ServletController?site=index&action=ingresar" target="newsFeed" class="btn btn-light">Ingresar</a>   
+                    <div></div>               
+                </div>
             </div>
 
             <!-- Barra de navegacion-->
@@ -39,47 +46,93 @@
             <div class="row mb-3">
                 <div class="col-sm-2"></div>
                 <div class="col-lg-8">
-                    <div class="d-flex justify-content-between">
-                        <div class="btn-group">
-                            <a href="ServletController?tipoNoticia=todo" target="newsFeed" 
-                               class="btn btn-light">
-                                <h6>TODO</h6></a>
-                            <a href="ServletController?tipoNoticia=politica" target="newsFeed" 
-                               class="btn btn-light">
-                                <h6>POLÍTICA</h6></a>
-                            <a href="ServletController?tipoNoticia=deportes" target="newsFeed" 
-                               class="btn btn-light">
-                                <h6>DEPORTES</h6></a>
-                            <a href="ServletController?tipoNoticia=economia" target="newsFeed" 
-                               class="btn btn-light">
-                                <h6>ECONOMÍA</h6></a>
-                            <a href="ServletController?tipoNoticia=mujer" target="newsFeed" 
-                               class="btn btn-light">
-                                <h6>MUJER</h6></a>
-                            <a href="ServletController?tipoNoticia=noticias" target="newsFeed" 
-                               class="btn btn-light">
-                                <h6>NOTICIAS</h6></a>
+                    <div class="d-flex justify-content-center">
+                        <a href="ServletController?site=index&action=downloadReport" target="newsFeed"
+                           class="btn btn-dark shadow-0">
+                            <i class="bi bi-file-earmark-bar-graph"></i>
+                        </a>
+                        <div class="vr mx-2" style="height: 30px;"></div>
+
+                        <div class="btn-group d-flex shadow-0">
+                            <form class="d-flex" action="ServletController?site=index&action=searchNoticiaByTitulo" method="POST" target="newsFeed">
+                                <input id="txtSearch" name="txtSearch" class="form-control me-2" type="text" placeholder="Buscar Noticias" style="width: 140px;">
+                                <button class="btn btn-dark me-2" type="submit" id="action" name="action" value="search">
+                                    <i class="bi bi-search"></i>
+                                </button>
+                                <a href="ServletController?site=index&action=listOldestNews" target="newsFeed"
+                                   class="btn btn-dark shadow-0">
+                                    <i class="bi bi-arrow-return-left"></i>
+                                </a>
+                            </form>
+
+
+
+                            <div class="vr mx-2" style="height: 30px;"></div>
+
                         </div>
 
-                        <form class="d-flex">
-                            <input class="form-control me-2" type="text" placeholder="Buscar">
-                            <button class="btn btn-dark" type="button">
-                                <i class="bi bi-search"></i>
+
+                        <form class="d-flex" action="ServletController?site=index&action=searchNoticiaByDate" method="POST" target="newsFeed">
+                            <input id="txtDay" name="txtDay" class="form-control  me-2" type="text" placeholder="DD" style="width: 55px;">
+                            <input id="txtMonth" name="txtMonth" class="form-control me-2" type="text" placeholder="MM" style="width: 55px;">
+                            <input id="txtYear" name="txtYear" class="form-control  me-2" type="text" placeholder="AAAA" style="width: 80px;">
+                            <button class="btn btn-dark  shadow-0" type="submit" id="action" name="action" value="search">
+                                <i class="bi bi-calendar"></i>
                             </button>
                         </form>
+
+                        <div class="vr mx-2" style="height: 30px;"></div>
                     </div>
-                </div>    
-                <div class="col-sm-2"></div>
-            </div>  
-            
-            <!-- Feed de noticias -->
-            <iframe class="newsfeed-iframe" id="newsFeed" name="newsFeed"></iframe>
-
-        </div>
+                </div>
 
 
+                <div class="d-flex justify-content-center">
+                    <div class="btn-group shadow-0">
+                        <a href="ServletController?site=index&action=getNoticiaByTipoNoticia&tipoNoticia=todo" target="newsFeed" 
+                           class="btn btn-light shadow-0">
+                            <h6>TODO</h6></a>
+                        <a href="ServletController?site=index&action=getNoticiaByTipoNoticia&tipoNoticia=politica" target="newsFeed" 
+                           class="btn btn-light shadow-0">
+                            <h6>POLÍTICA</h6></a>
+                        <a href="ServletController?site=index&action=getNoticiaByTipoNoticia&tipoNoticia=deportes" target="newsFeed" 
+                           class="btn btn-light shadow-0">
+                            <h6>DEPORTES</h6></a>
+                        <a href="ServletController?site=index&action=getNoticiaByTipoNoticia&tipoNoticia=economia" target="newsFeed" 
+                           class="btn btn-light shadow-0">
+                            <h6>ECONOMÍA</h6></a>
+                        <a href="ServletController?site=index&action=getNoticiaByTipoNoticia&tipoNoticia=mujer" target="newsFeed" 
+                           class="btn btn-light shadow-0">
+                            <h6>MUJER</h6></a>
+                        <a href="ServletController?site=index&action=getNoticiaByTipoNoticia&tipoNoticia=noticias" target="newsFeed" 
+                           class="btn btn-light shadow-0 me-2">
+                            <h6>NOTICIAS</h6></a>
+                    </div>
+                </div>
 
-    </div>
+            </div>
+        </div>    
+        <div class="col-sm-2"></div>
+    </div>  
+
+    <!-- Feed de noticias -->
+    <iframe class="newsfeed-iframe" id="newsFeed" name="newsFeed"></iframe>
+
+</div>
+
+
+
+</div>    
+<div class="col-sm-2"></div>
+</div>  
+
+<!-- Feed de noticias -->
+<iframe class="newsfeed-iframe" id="newsFeed" name="newsFeed"></iframe>
+
+</div>
+
+
+
+</div>
 </body>
 
 </html>

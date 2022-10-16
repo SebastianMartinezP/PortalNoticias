@@ -1,21 +1,19 @@
 package model.dto;
 
-import com.mysql.cj.jdbc.Blob;
-
 public class Imagen
 {
     private int idImagen;
-    private Blob imagenBlob;
+    private String base64imagen;
     private int idNoticia;
 
     public Imagen()
     {
     }
 
-    public Imagen(int idImagen, Blob imagenBlob, int idNoticia)
+    public Imagen(int idImagen, String base64imagen, int idNoticia)
     {
         this.idImagen = idImagen;
-        this.imagenBlob = imagenBlob;
+        this.base64imagen = base64imagen;
         this.idNoticia = idNoticia;
     }
 
@@ -24,9 +22,9 @@ public class Imagen
         return idImagen;
     }
 
-    public Blob getImagenBlob()
+    public String getBase64Imagen()
     {
-        return imagenBlob;
+        return base64imagen;
     }
 
     public int getIdNoticia()
@@ -39,9 +37,9 @@ public class Imagen
         this.idImagen = idImagen;
     }
 
-    public void setImagenBlob(Blob imagenBlob)
+    public void setBase64imagen(String base64imagen)
     {
-        this.imagenBlob = imagenBlob;
+        this.base64imagen = base64imagen;
     }
 
     public void setIdNoticia(int idNoticia)
@@ -52,7 +50,7 @@ public class Imagen
     @Override
     public String toString()
     {
-        return "Imagen{" + "idImagen=" + idImagen + ", imagenBlob=" + imagenBlob + ", idNoticia=" + idNoticia + '}';
+        return "Imagen{" + "idImagen=" + idImagen + ", base64imagen=" + base64imagen + ", idNoticia=" + idNoticia + "}\n";
     }
     
     

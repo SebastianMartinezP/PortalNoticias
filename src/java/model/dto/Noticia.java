@@ -2,9 +2,11 @@ package model.dto;
 
 import com.mysql.cj.jdbc.Blob;
 import java.time.LocalDateTime;
+import java.util.List;
 
 public class Noticia
 {
+
     private int idNoticia;
     public int idTipoNoticia;
     private String titulo;
@@ -13,7 +15,10 @@ public class Noticia
     private LocalDateTime fechaEmision;
     private Blob pdf;
     private String autor;
-
+    private List<model.dto.Imagen> imagenes;
+    private List<model.dto.Comentario> comentarios;
+    
+    
     public Noticia()
     {
     }
@@ -29,6 +34,10 @@ public class Noticia
         this.autor = autor;
     }
 
+    public List<Comentario> getComentarios()
+    {
+        return comentarios;
+    }
     public int getIdNoticia()
     {
         return idNoticia;
@@ -67,6 +76,20 @@ public class Noticia
     public String getAutor()
     {
         return autor;
+    }
+
+    public void setComentarios(List<Comentario> comentarios)
+    {
+        this.comentarios = comentarios;
+    }
+    public void setImagenes(List<Imagen> imagenes)
+    {
+        this.imagenes = imagenes;
+    }
+
+    public List<Imagen> getImagenes()
+    {
+        return imagenes;
     }
 
     public void setIdNoticia(int idNoticia)
@@ -112,7 +135,7 @@ public class Noticia
     @Override
     public String toString()
     {
-        return "Noticia{" + "idNoticia=" + idNoticia + ", idTipoNoticia=" + idTipoNoticia + ", titulo=" + titulo + ", subtitulo=" + subtitulo + ", cuerpo=" + cuerpo + ", fechaEmision=" + fechaEmision + ", autor=" + autor + '}';
+        return "Noticia{" + "idNoticia=" + idNoticia + ", idTipoNoticia=" + idTipoNoticia + ", titulo=" + titulo + ", subtitulo=" + subtitulo + ", cuerpo=" + cuerpo + ", fechaEmision=" + fechaEmision + ", pdf=" + pdf + ", autor=" + autor + ", imagenes=" + imagenes + '}';
     }
 
     

@@ -3,7 +3,6 @@
 body{
   font-family: 'Lora', serif;
 }
-
 .card-w{
   max-width: 22rem;
 }
@@ -36,9 +35,15 @@ body{
 
 .newsfeed-iframe {
     height: 1000px;
-    width: 1000px;
+    width: 2000px;
     min-width: 1000px;
     max-height: 1000px;
 }
 
 
+.newscontent-iframe {
+    height: 1000px;
+    width: 2000px;
+    min-width: 1000px;
+    max-height: 1000px;
+}

@@ -27,7 +27,7 @@
         <c:forEach var="n" items="${noticias}">
             <div class="bg-image hover-overlay">
                 <div class="bg-image rounded-6">
-                    <img src="../img/1662129246-covid-viernes.jpg" class="w-100" />
+                    <img src="/img/1662129246-covid-viernes.jpg" class="w-100" />
                     <!-- Mask -->
                     <div class="mask" style="background-color: rgba(0, 0, 0, 0.6)">
                         <div class="card-img-overlay">
