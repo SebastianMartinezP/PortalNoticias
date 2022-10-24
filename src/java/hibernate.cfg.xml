@@ -47,5 +47,12 @@ Contributor(s):
     <property name="hibernate.connection.password">123</property>
     <property name="hibernate.hbm2ddl.auto">update</property>
     <property name="hibernate.current_session_context_class">thread</property>
+    <property name="hibernate.dialect">org.hibernate.dialect.MySQLInnoDBDialect</property>
+    <property name="hibernate.jdbc.factory_class">org.hibernate.hql.classic.ClassicQueryTranslatorFactory</property>
+    <mapping resource="model/hibernate/dto/Noticia.hbm.xml"/>
+    <mapping resource="model/hibernate/dto/TipoNoticia.hbm.xml"/>
+    <mapping resource="model/hibernate/dto/Imagen.hbm.xml"/>
+    <mapping resource="model/hibernate/dto/Comentario.hbm.xml"/>
+    <mapping resource="model/hibernate/dto/Usuario.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>
