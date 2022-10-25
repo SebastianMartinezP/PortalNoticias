@@ -8,6 +8,7 @@ package model.hibernate.dao;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.SessionFactory;
 
+
 /**
  * Hibernate Utility class with a convenient method to get Session Factory
  * object.

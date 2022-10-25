@@ -1,10 +1,16 @@
 package test;
 
 
+import java.util.Date;
 import java.util.List;
 import model.dto.Imagen;
+import model.hibernate.dao.ComentarioDao;
+import model.hibernate.dao.NoticiaDao;
+import model.hibernate.dao.TipoNoticiaDao;
 import model.hibernate.dao.UsuarioDao;
-import model.dto.Usuario;
+import model.hibernate.dto.Noticia;
+import model.hibernate.dto.Usuario;
+import model.hibernate.dto.Comentario;
 
 
 public class Testing
@@ -89,23 +95,48 @@ public class Testing
         ////////////////////////////////////////////////////////////////////////////////////////////
         
             
-        //Usuario user = new Usuario(1,"UserHibernate", "123", (Boolean.TRUE));
-        //UsuarioDao dao = new UsuarioDao();
+        //DAO USUARIO
+        //model.hibernate.dto.Usuario usuarioh = new model.hibernate.dto.Usuario( "UserHibernate", "123", (Boolean.TRUE));
+        //model.hibernate.dao.UsuarioDao dao = new model.hibernate.dao.UsuarioDao();
         //dao.agregar(usuarioh);
-        // dao.eliminar(11);
+        //dao.eliminar(34);
         //for (model.hibernate.dto.Usuario aux :dao.listar()){
-    
-        //stashed
-        model.hibernate.dto.Usuario usuarioh = new model.hibernate.dto.Usuario( "UserHibernate", "123", (Boolean.TRUE));
-        model.hibernate.dao.UsuarioDao dao = new model.hibernate.dao.UsuarioDao();
-        dao.agregar(usuarioh);
-        //dao.eliminar(11);
-       // for (model.hibernate.dto.Usuario aux :dao.listar()){
-
         //System.out.println("Nickname: "+aux.getNickname());
         //System.out.println("Password: "+aux.getPassword());
         //}
-
+        
+        //DAO NOTICIA      
+        //model.hibernate.dto.Noticia hibernate = new model.hibernate.dto.Noticia("titulo", "subtitulo", "cuerpo",Date("2022/09/01"));
+        //NoticiaDao NoDao = new NoticiaDao();
+        //NoDao.agregar(hibernate);
+        //NoDao.eliminar(34);
+        /*for (model.hibernate.dto.Noticia aux :NoDao.listar()){
+        System.out.println("Título: "+aux.getTitulo());
+        System.out.println("Autor: "+aux.getAutor());
+        System.out.println("Sub Título: "+aux.getSubtitulo());
+        System.out.println("Cuerpo: "+aux.getCuerpo());
+        }*/
+        
+        //DAO TIPO NOTICIA
+        //model.hibernate.dto.TipoNoticia Salud = new model.hibernate.dto.TipoNoticia("Salud");
+        //TipoNoticiaDao TipoNoDao = new TipoNoticiaDao();
+        //TipoNoDao.agregar(Salud);
+        //TipoNoDao.eliminar(6);
+        /*for (model.hibernate.dto.TipoNoticia aux :TipoNoDao.listar()){
+        System.out.println("Descripción: "+aux.getDescripcion());
+        }*/
+        //DAO COMENTARIO
+        //model.hibernate.dto.Comentario hiber = new model.hibernate.dto.Comentario((Boolean.TRUE));
+        //model.hibernate.dto.Comentario hiber = new model.hibernate.dto.Comentario(21,"UserHibernate", "contenido",(Boolean.TRUE));
+        //ComentarioDao comen = new ComentarioDao();
+        //comen.agregar(hiber);
+        //comen.eliminar(1);
+        /*for (model.hibernate.dto.Comentario aux :comen.listar()){
+        System.out.println("Descripción: "+aux.getcontenido());
+        }*/
+        
+        
+        
         
     }
 }
