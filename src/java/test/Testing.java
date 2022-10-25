@@ -83,7 +83,20 @@ public class Testing
 
         /////////////////////////// Comentario (CRU)
         
-        System.out.println(new model.dao.Usuario().listMostComments());
+        //System.out.println(new model.dao.Usuario().listMostComments());
+         ////////////////////////////////////////////////////////////////////////////////////////////
+        //-------------------------------------TEST HIBERNATE---------------------------------------
+        ////////////////////////////////////////////////////////////////////////////////////////////
+        
+            
+        model.hibernate.dto.Usuario usuarioh = new model.hibernate.dto.Usuario( "UserHibernate", "123", (Boolean.TRUE));
+        model.hibernate.dao.UsuarioDao dao = new model.hibernate.dao.UsuarioDao();
+        //dao.agregar(usuarioh);
+        //dao.eliminar(11);
+        for (model.hibernate.dto.Usuario aux :dao.listar()){
+        System.out.println("Nickname: "+aux.getNickname());
+        System.out.println("Password: "+aux.getPassword());
+        }
 
         
     }
