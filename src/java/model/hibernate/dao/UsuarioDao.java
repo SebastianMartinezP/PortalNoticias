@@ -10,6 +10,8 @@ import java.util.List;
 import model.hibernate.dto.Usuario;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -21,12 +23,12 @@ public class UsuarioDao implements Crud<model.hibernate.dto.Usuario>{
     private Session session;
     private Transaction transaction;
     public void initOperaciones(){
-         session = model.dao.HibernateUtil.getSessionFactory().openSession();
+         session = model.hibernate.dao.HibernateUtil.getSessionFactory().openSession();
          transaction = session.beginTransaction();
      }
     
     @Override
-    public boolean agregar(model.hibernate.dto.Usuario generico) {
+    public boolean agregar(Usuario generico) {
         try {
             initOperaciones();
             session.save(generico);

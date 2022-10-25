@@ -3,7 +3,7 @@ package test;
 
 import java.util.List;
 import model.dto.Imagen;
-
+import model.hibernate.dao.UsuarioDao;
 import model.dto.Usuario;
 
 
@@ -89,14 +89,14 @@ public class Testing
         ////////////////////////////////////////////////////////////////////////////////////////////
         
             
-        model.hibernate.dto.Usuario usuarioh = new model.hibernate.dto.Usuario( "UserHibernate", "123", (Boolean.TRUE));
-        model.hibernate.dao.UsuarioDao dao = new model.hibernate.dao.UsuarioDao();
+        Usuario user = new Usuario(1,"UserHibernate", "123", (Boolean.TRUE));
+        UsuarioDao dao = new UsuarioDao();
         //dao.agregar(usuarioh);
-        //dao.eliminar(11);
-        for (model.hibernate.dto.Usuario aux :dao.listar()){
-        System.out.println("Nickname: "+aux.getNickname());
-        System.out.println("Password: "+aux.getPassword());
-        }
+        dao.eliminar(11);
+        //for (model.hibernate.dto.Usuario aux :dao.listar()){
+        //System.out.println("Nickname: "+aux.getNickname());
+        //System.out.println("Password: "+aux.getPassword());
+        //}
 
         
     }
