@@ -97,89 +97,95 @@
                                                             <h4>${n.getSubtitulo()}</h4>
                                                             <p>${n.getCuerpo()}</p>
                                                         </div>
-                                                        <div>
-                                                            <!-- Carousel wrapper -->
-                                                            <div id="carouselBasicExample_${n.getIdNoticia()}"
-                                                                 class="carousel slide carousel-fade"
-                                                                 data-mdb-ride="carousel">
-                                                                <!-- Indicators -->
-                                                                <div class="carousel-indicators">
-                                                                    <c:forEach var="img" items="${n.imagenes}">
-                                                                        <c:choose>
-                                                                            <c:when test="${n.imagenes.indexOf(img) == 0}">
-                                                                                <button type="button"
-                                                                                        data-mdb-target="#carouselBasicExample_${n.getIdNoticia()}"
-                                                                                        data-mdb-slide-to="${n.imagenes.indexOf(img)}" class="active"
-                                                                                        aria-current="true"
-                                                                                        aria-label="Slide ${n.imagenes.indexOf(img) + 1}"></button>
-                                                                            </c:when>
+                                                        
+                                                        
+                                                        <%-- 
+                                                    <div>
+                                                        <!-- Carousel wrapper -->
+                                                        <div id="carouselBasicExample_${n.getIdNoticia()}"
+                                                             class="carousel slide carousel-fade"
+                                                             data-mdb-ride="carousel">
+                                                            <!-- Indicators -->
+                                                            <div class="carousel-indicators">
+                                                                <c:forEach var="img" items="${n.imagens}">
+                                                                    <c:choose>
+                                                                        <c:when test="${n.imagens.indexOf(img) == 0}">
+                                                                            <button type="button"
+                                                                                    data-mdb-target="#carouselBasicExample_${n.getIdNoticia()}"
+                                                                                    data-mdb-slide-to="${n.imagens.indexOf(img)}" class="active"
+                                                                                    aria-current="true"
+                                                                                    aria-label="Slide ${n.imagens.indexOf(img) + 1}"></button>
+                                                                        </c:when>
 
-                                                                            <c:otherwise>
-                                                                                <button type="button"
-                                                                                        data-mdb-target="#carouselBasicExample_${n.getIdNoticia()}"
-                                                                                        data-mdb-slide-to="${n.imagenes.indexOf(img)}"
-                                                                                        aria-current="true"
-                                                                                        aria-label="Slide ${n.imagenes.indexOf(img) + 1}"></button>
-                                                                            </c:otherwise>
+                                                                        <c:otherwise>
+                                                                            <button type="button"
+                                                                                    data-mdb-target="#carouselBasicExample_${n.getIdNoticia()}"
+                                                                                    data-mdb-slide-to="${n.imagens.indexOf(img)}"
+                                                                                    aria-current="true"
+                                                                                    aria-label="Slide ${n.imagens.indexOf(img) + 1}"></button>
+                                                                        </c:otherwise>
 
-                                                                        </c:choose>
-                                                                    </c:forEach>
-                                                                </div>
-
-                                                                <!-- Inner -->
-                                                                <div class="carousel-inner" id="imagenes" >
-
-                                                                    <c:forEach var="img" items="${n.imagenes}">
-                                                                        <c:choose>
-                                                                            <c:when test="${n.imagenes.indexOf(img) == 0}">
-                                                                                <div class="carousel-item active">
-                                                                                    <img src="data:image/jpg;base64,${img.getBase64Imagen()}" height="200"
-                                                                                         class="d-block w-100"/>
-                                                                                    <div class="carousel-caption d-none d-md-block">
-                                                                                        <h5>${n.getAutor()}</h5>
-                                                                                        <p>${n.getSubtitulo()}</p>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </c:when>
-
-                                                                            <c:otherwise>
-                                                                                <!-- Single item -->
-                                                                                <div class="carousel-item">
-                                                                                    <img src="data:image/jpg;base64,${img.getBase64Imagen()}" height="200"
-                                                                                         class="d-block w-100"/>
-                                                                                    <div class="carousel-caption d-none d-md-block">
-                                                                                        <h5>${n.getAutor()}</h5>
-                                                                                        <p>${n.getSubtitulo()}</p>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </c:otherwise>
-
-                                                                        </c:choose>
-                                                                    </c:forEach>
-                                                                </div>
-                                                                <!-- Inner -->      
-
-                                                                <!-- Controls -->
-                                                                <button class="carousel-control-prev"
-                                                                        type="button"
-                                                                        data-mdb-target="#carouselBasicExample_${n.getIdNoticia()}"
-                                                                        data-mdb-slide="prev">
-                                                                    <span class="carousel-control-prev-icon"
-                                                                          aria-hidden="true"></span>
-                                                                    <span
-                                                                        class="visually-hidden">Previous</span>
-                                                                </button>
-                                                                <button class="carousel-control-next"
-                                                                        type="button"
-                                                                        data-mdb-target="#carouselBasicExample_${n.getIdNoticia()}"
-                                                                        data-mdb-slide="next">
-                                                                    <span class="carousel-control-next-icon"
-                                                                          aria-hidden="true"></span>
-                                                                    <span class="visually-hidden">Next</span>
-                                                                </button>
+                                                                    </c:choose>
+                                                                </c:forEach>
                                                             </div>
-                                                            <!-- Carousel wrapper -->
+
+                                                            <!-- Inner -->
+                                                            <div class="carousel-inner" id="imagens" >
+
+                                                                <c:forEach var="img" items="${n.imagens}">
+                                                                    <c:choose>
+                                                                        <c:when test="${n.imagens.indexOf(img) == 0}">
+                                                                            <div class="carousel-item active">
+                                                                                <img src="data:image/jpg;base64,${img.getBase64Imagen()}" height="200"
+                                                                                     class="d-block w-100"/>
+                                                                                <div class="carousel-caption d-none d-md-block">
+                                                                                    <h5>${n.getAutor()}</h5>
+                                                                                    <p>${n.getSubtitulo()}</p>
+                                                                                </div>
+                                                                            </div>
+                                                                        </c:when>
+
+                                                                        <c:otherwise>
+                                                                            <!-- Single item -->
+                                                                            <div class="carousel-item">
+                                                                                <img src="data:image/jpg;base64,${img.getBase64Imagen()}" height="200"
+                                                                                     class="d-block w-100"/>
+                                                                                <div class="carousel-caption d-none d-md-block">
+                                                                                    <h5>${n.getAutor()}</h5>
+                                                                                    <p>${n.getSubtitulo()}</p>
+                                                                                </div>
+                                                                            </div>
+                                                                        </c:otherwise>
+
+                                                                    </c:choose>
+                                                                </c:forEach>
+                                                            </div>
+                                                            <!-- Inner -->      
+
+                                                            <!-- Controls -->
+                                                            <button class="carousel-control-prev"
+                                                                    type="button"
+                                                                    data-mdb-target="#carouselBasicExample_${n.getIdNoticia()}"
+                                                                    data-mdb-slide="prev">
+                                                                <span class="carousel-control-prev-icon"
+                                                                      aria-hidden="true"></span>
+                                                                <span
+                                                                    class="visually-hidden">Previous</span>
+                                                            </button>
+                                                            <button class="carousel-control-next"
+                                                                    type="button"
+                                                                    data-mdb-target="#carouselBasicExample_${n.getIdNoticia()}"
+                                                                    data-mdb-slide="next">
+                                                                <span class="carousel-control-next-icon"
+                                                                      aria-hidden="true"></span>
+                                                                <span class="visually-hidden">Next</span>
+                                                            </button>
                                                         </div>
+                                                        <!-- Carousel wrapper -->
+                                                    </div>
+                                                    --%>
+                                                    
+                                                    
                                                     </div>
 
 
@@ -201,7 +207,7 @@
 
                                                                     <c:forEach var="c" items="${n.comentarios}">
                                                                         <c:choose>
-                                                                            <c:when test="${c.getIsEnabled() == true}">
+                                                                            <c:when test="${c.isIsEnabled() == true}">
                                                                                 <li class="list-group-item mx-3" style="max-width: 800px;">
                                                                                     <div class="card">
                                                                                         <div class="card-body">

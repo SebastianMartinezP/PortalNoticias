@@ -198,7 +198,6 @@ public class Usuario
             this.connection = mysqlConnection.getConection();
             this.preparedStatement = this.connection.prepareStatement(sql);
             this.resultSet = this.preparedStatement.executeQuery();
-            ResultSetMetaData resultSetMetaData = this.resultSet.getMetaData();
             
             if (this.resultSet.next())
             {

@@ -44,9 +44,9 @@ public class ComentarioDao implements Crud<Comentario>{
         try {
             initOperaciones();
             List<Comentario> aux = session.createQuery("from Comentario").list();
+            session.close();
             return aux;         
         } catch (Exception e) {
-            session.close();
             throw new RuntimeException("error al listar comentarios"+e.toString());
         }
     }
@@ -56,12 +56,12 @@ public class ComentarioDao implements Crud<Comentario>{
         try {
             initOperaciones();
             List<Comentario> aux = session.createQuery("from Comentario where id_comentario ="+id).list();
-               for (Comentario comentario : aux) {
-                   return comentario;
-               }
+            for (Comentario comentario : aux) {
+                session.close();
+                return comentario;
+            }
                     
         } catch (Exception e) {
-            session.close();
             throw new RuntimeException("Comentario no encontrada"+e.toString());
         }
            return null;

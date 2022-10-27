@@ -8,7 +8,7 @@
             <column name="id_noticia" />
             <generator class="identity" />
         </id>
-        <many-to-one name="tipoNoticia" class="model.hibernate.dto.TipoNoticia" fetch="select">
+        <many-to-one name="tipoNoticia" class="model.hibernate.dto.TipoNoticia" fetch="select" cascade="all">
             <column name="id_tipo_noticia" />
         </many-to-one>
         <property name="titulo" type="string">
@@ -20,7 +20,7 @@
         <property name="cuerpo" type="string">
             <column name="cuerpo" length="800" not-null="true" />
         </property>
-        <property name="fechaEmision" type="timestamp">
+        <property name="fechaEmision" type="string">
             <column name="fecha_emision" length="19" not-null="true" />
         </property>
         <property name="pdf" type="binary">
@@ -29,13 +29,13 @@
         <property name="autor" type="string">
             <column name="autor" length="50" />
         </property>
-        <set name="comentarios" table="comentario" inverse="true" lazy="true" fetch="select">
+        <set name="comentarios" table="comentario" inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="id_noticia" />
             </key>
             <one-to-many class="model.hibernate.dto.Comentario" />
         </set>
-        <set name="imagens" table="imagen" inverse="true" lazy="true" fetch="select">
+        <set name="imagens" table="imagen" inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="id_noticia" />
             </key>

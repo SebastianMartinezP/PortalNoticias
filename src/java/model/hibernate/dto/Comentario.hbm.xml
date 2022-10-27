@@ -8,10 +8,10 @@
             <column name="id_comentario" />
             <generator class="identity" />
         </id>
-        <many-to-one name="noticia" class="model.hibernate.dto.Noticia" fetch="select">
+        <many-to-one name="noticia" class="model.hibernate.dto.Noticia" fetch="select" cascade="all">
             <column name="id_noticia" />
         </many-to-one>
-        <many-to-one name="usuario" class="model.hibernate.dto.Usuario" fetch="select">
+        <many-to-one name="usuario" class="model.hibernate.dto.Usuario" fetch="select" cascade="all">
             <column name="id_usuario" />
         </many-to-one>
         <property name="contenido" type="string">

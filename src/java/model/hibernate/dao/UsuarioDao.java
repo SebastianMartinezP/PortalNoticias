@@ -61,9 +61,9 @@ public class UsuarioDao implements Crud<model.hibernate.dto.Usuario>{
         try {
             initOperaciones();
             List<model.hibernate.dto.Usuario> aux = session.createQuery("from Usuario").list();
-            return aux;         
-        } catch (Exception e) {
             session.close();
+            return aux;
+        } catch (Exception e) {
             throw new RuntimeException("error al listar usuarios"+e.toString());
         }
     }
@@ -73,15 +73,31 @@ public class UsuarioDao implements Crud<model.hibernate.dto.Usuario>{
         try {
             initOperaciones();
             List<model.hibernate.dto.Usuario> aux = session.createQuery("from Usuario where id_usuario ="+id).list();
-               for (model.hibernate.dto.Usuario usuario : aux) {
-                   return usuario;
-               }
+            for (model.hibernate.dto.Usuario usuario : aux) {
+                session.close();
+                return usuario;
+            }
                     
         } catch (Exception e) {
-            session.close();
             throw new RuntimeException("Usuario no encontrado"+e.toString());
         }
            return null;
     }
+    
+    public boolean actualizar(Usuario generico) {
+        try {
+            initOperaciones();
+            session.update(generico);
+            transaction.commit();
+            session.close();
+            return true;
+        } catch (Exception e) {
+            throw new RuntimeException("Usuario no se ha agregado"+e);
+            
+        }
+    }
+    
+    
+    
     
 }

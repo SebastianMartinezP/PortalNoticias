@@ -8,7 +8,7 @@
             <column name="id_imagen" />
             <generator class="identity" />
         </id>
-        <many-to-one name="noticia" class="model.hibernate.dto.Noticia" fetch="select">
+        <many-to-one name="noticia" class="model.hibernate.dto.Noticia" fetch="select" cascade="all">
             <column name="id_noticia" />
         </many-to-one>
         <property name="imagenBlob" type="binary">

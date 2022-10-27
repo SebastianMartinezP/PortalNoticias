@@ -15,16 +15,16 @@ import org.hibernate.Transaction;
  *
  * @author Casa
  */
+public class TipoNoticiaDao implements Crud<TipoNoticia> {
 
-public class TipoNoticiaDao implements Crud<TipoNoticia>{
-
-    
     private Session session;
     private Transaction transaction;
-    public void initOperaciones(){
-         session = model.hibernate.dao.HibernateUtil.getSessionFactory().openSession();
-         transaction = session.beginTransaction();}
-    
+
+    public void initOperaciones() {
+        session = model.hibernate.dao.HibernateUtil.getSessionFactory().openSession();
+        transaction = session.beginTransaction();
+    }
+
     @Override
     public boolean agregar(TipoNoticia generico) {
         try {
@@ -34,7 +34,7 @@ public class TipoNoticiaDao implements Crud<TipoNoticia>{
             session.close();
             return true;
         } catch (Exception e) {
-            throw new RuntimeException("Tipo Noticia no se ha agregado"+e);
+            throw new RuntimeException("Tipo Noticia no se ha agregado" + e);
         }
     }
 
@@ -46,9 +46,9 @@ public class TipoNoticiaDao implements Crud<TipoNoticia>{
             session.delete(aux);
             transaction.commit();
             session.close();
-            
+
         } catch (Exception e) {
-            throw new RuntimeException("Noticia no se ha eliminado"+e.toString());
+            throw new RuntimeException("Noticia no se ha eliminado" + e.toString());
         }
     }
 
@@ -57,10 +57,11 @@ public class TipoNoticiaDao implements Crud<TipoNoticia>{
         try {
             initOperaciones();
             List<TipoNoticia> aux = session.createQuery("from TipoNoticia").list();
-            return aux;         
-        } catch (Exception e) {
             session.close();
-            throw new RuntimeException("error al listar tipo de noticias"+e.toString());
+            return aux;
+        } catch (Exception e) {
+
+            throw new RuntimeException("error al listar tipo de noticias" + e.toString());
         }
     }
 
@@ -68,16 +69,16 @@ public class TipoNoticiaDao implements Crud<TipoNoticia>{
     public TipoNoticia buscar(int id) {
         try {
             initOperaciones();
-            List<TipoNoticia> aux = session.createQuery("from TipoNoticia where id_tipo_noticia ="+id).list();
-               for (TipoNoticia noticia : aux) {
-                   return noticia;
-               }
-                    
+            List<TipoNoticia> aux = session.createQuery("from TipoNoticia where id_tipo_noticia =" + id).list();
+            for (TipoNoticia noticia : aux) {
+                session.close();
+                return noticia;
+            }
+
         } catch (Exception e) {
-            session.close();
-            throw new RuntimeException("Noticia no encontrada"+e.toString());
+            throw new RuntimeException("Noticia no encontrada" + e.toString());
         }
-           return null;
+        return null;
     }
-    
+
 }
