@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 24, 2022 12:23:58 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="model.hibernate.dto.Comentario" table="comentario" catalog="portalnoticias" optimistic-lock="version">
+        <id name="idComentario" type="java.lang.Integer">
+            <column name="id_comentario" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="noticia" class="model.hibernate.dto.Noticia" fetch="select" cascade="all">
+            <column name="id_noticia" />
+        </many-to-one>
+        <many-to-one name="usuario" class="model.hibernate.dto.Usuario" fetch="select" cascade="all">
+            <column name="id_usuario" />
+        </many-to-one>
+        <property name="contenido" type="string">
+            <column name="contenido" length="250" />
+        </property>
+        <property name="isEnabled" type="boolean">
+            <column name="is_enabled" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

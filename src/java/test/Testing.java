@@ -1,10 +1,15 @@
 package test;
 
 
+import com.sun.org.apache.bcel.internal.generic.AALOAD;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import model.dto.Imagen;
+import model.hibernate.dao.*;
+import model.hibernate.dto.Usuario;
 
-import model.dto.Usuario;
 
 
 public class Testing
@@ -83,8 +88,98 @@ public class Testing
 
         /////////////////////////// Comentario (CRU)
         
-        System.out.println(new model.dao.Usuario().listMostComments());
-
+        //System.out.println(new model.dao.Usuario().listMostComments());
+         ////////////////////////////////////////////////////////////////////////////////////////////
+        //-------------------------------------TEST HIBERNATE---------------------------------------
+        ////////////////////////////////////////////////////////////////////////////////////////////
+        
+            
+        //DAO USUARIO
+        //model.hibernate.dto.Usuario usuarioh = new model.hibernate.dto.Usuario( "UserHibernate", "123", (Boolean.TRUE));
+        //model.hibernate.dao.UsuarioDao dao = new model.hibernate.dao.UsuarioDao();
+        //dao.agregar(usuarioh);
+        //dao.eliminar(34);
+        //for (model.hibernate.dto.Usuario aux :dao.listar()){
+        //System.out.println("Nickname: "+aux.getNickname());
+        //System.out.println("Password: "+aux.getPassword());
+        //}
+        
+        //DAO NOTICIA      
+        //model.hibernate.dto.Noticia hibernate = new model.hibernate.dto.Noticia("titulo", "subtitulo", "cuerpo",Date("2022/09/01"));
+        //NoticiaDao NoDao = new NoticiaDao();
+        //NoDao.agregar(hibernate);
+        //NoDao.eliminar(34);
+        /*for (model.hibernate.dto.Noticia aux :NoDao.listar()){
+        System.out.println("Título: "+aux.getTitulo());
+        System.out.println("Autor: "+aux.getAutor());
+        System.out.println("Sub Título: "+aux.getSubtitulo());
+        System.out.println("Cuerpo: "+aux.getCuerpo());
+        }*/
+        
+        //DAO TIPO NOTICIA
+        //model.hibernate.dto.TipoNoticia Salud = new model.hibernate.dto.TipoNoticia("Salud");
+        //TipoNoticiaDao TipoNoDao = new TipoNoticiaDao();
+        //TipoNoDao.agregar(Salud);
+        //TipoNoDao.eliminar(6);
+        /*for (model.hibernate.dto.TipoNoticia aux :TipoNoDao.listar()){
+        System.out.println("Descripción: "+aux.getDescripcion());
+        }*/
+        //DAO COMENTARIO
+        //model.hibernate.dto.Comentario hiber = new model.hibernate.dto.Comentario((Boolean.TRUE));
+        //model.hibernate.dto.Comentario hiber = new model.hibernate.dto.Comentario(21,"UserHibernate", "contenido",(Boolean.TRUE));
+        //ComentarioDao comen = new ComentarioDao();
+        //comen.agregar(hiber);
+        //comen.eliminar(1);
+        /*for (model.hibernate.dto.Comentario aux :comen.listar()){
+        System.out.println("Descripción: "+aux.getcontenido());
+        }*/
+        
+        NoticiaDao noticiaDao = new NoticiaDao();
+        
+        for (model.hibernate.dto.Noticia aux :noticiaDao.listar())
+        {
+            System.out.println(aux.getFechaEmision());
+        }
+        
+        System.out.println("\n");
+        
+        for (model.hibernate.dto.Noticia aux :noticiaDao.listByDate("2020", "09", "04"))
+        {
+            System.out.println(aux.getFechaEmision());
+        }
+        
+        System.out.println("\n");
+        
+        for (model.hibernate.dto.Noticia aux :noticiaDao.listOldest())
+        {
+            System.out.println(aux.getFechaEmision());
+        }
+        
+        System.out.println("deportes");
+        for (model.hibernate.dto.Noticia aux :noticiaDao.listByTipoNoticia("deportes"))
+        {
+            System.out.println(aux.getFechaEmision());
+        }
+        System.out.println("mujer");
+        for (model.hibernate.dto.Noticia aux :noticiaDao.listByTipoNoticia("mujer"))
+        {
+            System.out.println(aux.getFechaEmision());
+        }
+        
+        /////////////////////////////////////////////////////////////////
+        UsuarioDao usuarioDao = new UsuarioDao();
+        /*
+        model.hibernate.dto.Usuario usuario = usuarioDao.buscar(1);
+        
+        System.out.println(usuario.getNickname() + ", " + usuario.getPassword());
+        
+        usuario.setNickname("nickname1");
+        
+        
+        usuarioDao.actualizar(usuario);
+        */
+        
+        //System.out.println(usuarioDao.listMostComments().toString());
         
     }
 }

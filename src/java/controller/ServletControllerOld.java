@@ -17,14 +17,13 @@ import com.itextpdf.text.FontFactory;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.itextpdf.text.pdf.PdfPTable;
-import java.util.stream.Collectors;
 
 import model.dto.Usuario;
 
 // Hibernate
 import model.hibernate.dao.*;
 
-public class ServletController extends HttpServlet
+public class ServletControllerOld extends HttpServlet
 {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -34,7 +33,12 @@ public class ServletController extends HttpServlet
         {
 
             // DAOs
-            NoticiaDao daoNoticia = new NoticiaDao();
+
+            //model.dao.TipoNoticia daoTipoNoticia;
+            //model.dao.Noticia daoNoticia;
+
+            model.dao.TipoNoticia daoTipoNoticia = new model.dao.TipoNoticia();
+            model.dao.Noticia daoNoticia = new model.dao.Noticia();
            
             
             
@@ -43,7 +47,7 @@ public class ServletController extends HttpServlet
             String action = request.getParameter("action");
 
             // Variables globales
-            List<model.hibernate.dto.Noticia> noticias;
+            List<model.dto.Noticia> noticias;
 
             switch (site)
             {
@@ -53,11 +57,11 @@ public class ServletController extends HttpServlet
                         // descargar informe / reporte
                         case "downloadReport":
                             // rescatamos la noticia, creamos el nombre del pdf
-                            daoNoticia = new NoticiaDao();
+                            daoNoticia = new model.dao.Noticia();
                             
-                            List<model.hibernate.dto.Noticia> oldest = daoNoticia.listOldest();
-                            List<model.hibernate.dto.Noticia> newest = daoNoticia.listar();
-                            model.hibernate.dto.Usuario mostComments = new model.hibernate.dto.Usuario();//new UsuarioDao().listMostComments();
+                            List<model.dto.Noticia> oldest = daoNoticia.listOldest();
+                            List<model.dto.Noticia> newest = daoNoticia.list();
+                            model.dto.Usuario mostComments = new model.dao.Usuario().listMostComments();
                             
                             
                             String filename = "Reporte_PortalNoticias.pdf";
@@ -103,7 +107,7 @@ public class ServletController extends HttpServlet
                             {
                                 tableOldest.addCell(Integer.toString(i + 1));
                                 tableOldest.addCell(oldest.get(i).getTitulo());
-                                tableOldest.addCell(oldest.get(i).getFechaEmision());
+                                tableOldest.addCell(oldest.get(i).getFechaEmision().toString());
                             }
                             document.add(tableOldest);
                             
@@ -126,7 +130,7 @@ public class ServletController extends HttpServlet
                             {
                                 tableNewest.addCell(Integer.toString(i + 1));
                                 tableNewest.addCell(newest.get(i).getTitulo());
-                                tableNewest.addCell(newest.get(i).getFechaEmision());
+                                tableNewest.addCell(newest.get(i).getFechaEmision().toString());
                             }
                             document.add(tableNewest);
                             
@@ -142,15 +146,15 @@ public class ServletController extends HttpServlet
                                 )
                             );
                             
-                            PdfPTable tableUser = new PdfPTable(2);
+                            PdfPTable tableUser = new PdfPTable(3);
                             tableUser.addCell(new Paragraph("ID"));
                             tableUser.addCell(new Paragraph("Usuario"));
-                            //tableUser.addCell(new Paragraph("Cantidad opiniones"));
+                            tableUser.addCell(new Paragraph("Cantidad opiniones"));
                             
                             
                             tableUser.addCell(Integer.toString(mostComments.getIdUsuario()));
                             tableUser.addCell(mostComments.getNickname());
-                            //tableUser.addCell(Integer.toString(mostComments.getCountComentarios()));
+                            tableUser.addCell(Integer.toString(mostComments.getCountComentarios()));
                             document.add(tableUser);
                             
                             document.close();
@@ -161,7 +165,7 @@ public class ServletController extends HttpServlet
                         
                         // cambiar el orden de las busquedas
                         case "listOldestNews":
-                            daoNoticia = new NoticiaDao();
+                            daoNoticia = new model.dao.Noticia();
 
                             noticias = daoNoticia.listOldest();
                             request.setAttribute("noticias", noticias);
@@ -171,30 +175,31 @@ public class ServletController extends HttpServlet
 
                         // cargar pagina principal por tipos de noticias
                         case "getNoticiaByTipoNoticia":
-                            daoNoticia = new NoticiaDao();
+                            daoTipoNoticia = new model.dao.TipoNoticia();
+                            daoNoticia = new model.dao.Noticia();
 
                             String tipoNoticia = request.getParameter("tipoNoticia");
 
                             if (!tipoNoticia.equals("todo"))
                             {
-                                noticias = daoNoticia.listar().stream().filter(p -> p.getTipoNoticia().getDescripcion().equals(tipoNoticia)).collect(Collectors.toList());
+                                int idTipoNoticia = daoTipoNoticia.list(tipoNoticia).get(0).getIdTipoNoticia();
+                                noticias = daoNoticia.list(idTipoNoticia);
                             } else
                             {
-                                noticias = daoNoticia.listar();
+                                noticias = daoNoticia.list();
                             }
 
                             request.setAttribute("noticias", noticias);
                             request.getRequestDispatcher("jsp/newsFeed.jsp").forward(request, response);
-                            
-                            
+
                             break;
 
                         // cargar pagina principal por tipos de noticias
                         case "searchNoticiaByTitulo":
-                            daoNoticia = new NoticiaDao();
+                            daoNoticia = new model.dao.Noticia();
 
                             String tituloNoticia = request.getParameter("txtSearch");
-                            noticias = daoNoticia.listByTitulo(tituloNoticia);
+                            noticias = daoNoticia.listByTitle(tituloNoticia);
 
                             request.setAttribute("noticias", noticias);
                             request.getRequestDispatcher("jsp/newsFeed.jsp").forward(request, response);
@@ -204,7 +209,7 @@ public class ServletController extends HttpServlet
 
                         // cargar pagina principal por tipos de noticias
                         case "searchNoticiaByDate":
-                            daoNoticia = new NoticiaDao();
+                            daoNoticia = new model.dao.Noticia();
 
                             String day = request.getParameter("txtDay");
                             String month = request.getParameter("txtMonth");
@@ -213,7 +218,7 @@ public class ServletController extends HttpServlet
                             // en el caso que los textos esten vacios
                             if (day.length() == 0 || month.length() == 0 || year.length() == 0)
                             {
-                                noticias = daoNoticia.listar();
+                                noticias = daoNoticia.list();
                             } else
                             {
                                 noticias = daoNoticia.listByDate(year, month, day);
@@ -222,7 +227,7 @@ public class ServletController extends HttpServlet
                             // en el caso que la fecha no exista
                             if (noticias.isEmpty())
                             {
-                                noticias = daoNoticia.listar();
+                                noticias = daoNoticia.list();
                             }
 
                             request.setAttribute("noticias", noticias);
@@ -284,13 +289,13 @@ public class ServletController extends HttpServlet
                             
                             // rescatamos la noticia, creamos el nombre del pdf
                             
-                            daoNoticia = new NoticiaDao();
+                            daoNoticia = new model.dao.Noticia();
                             int idNoticia = Integer.parseInt(request.getParameter("idNoticia"));
-                            model.hibernate.dto.Noticia noticia = daoNoticia.buscar(idNoticia);
+                            model.dto.Noticia noticia = daoNoticia.findNoticia(idNoticia);
                             
                             String filename = 
                                     "Noticia_" + noticia.getIdNoticia() + '_' 
-                                    + noticia.getFechaEmision() + ".pdf";
+                                    + noticia.getFechaEmision().toString() + ".pdf";
                             
                             
                             // configuramos la respuesta del Servlet

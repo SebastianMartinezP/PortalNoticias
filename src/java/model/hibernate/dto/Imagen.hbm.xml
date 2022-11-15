@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 24, 2022 12:23:58 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="model.hibernate.dto.Imagen" table="imagen" catalog="portalnoticias" optimistic-lock="version">
+        <id name="idImagen" type="java.lang.Integer">
+            <column name="id_imagen" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="noticia" class="model.hibernate.dto.Noticia" fetch="select" cascade="all">
+            <column name="id_noticia" />
+        </many-to-one>
+        <property name="imagenBlob" type="binary">
+            <column name="imagen_blob" />
+        </property>
+    </class>
+</hibernate-mapping>

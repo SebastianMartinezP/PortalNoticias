@@ -1,5 +1,6 @@
 package model.dao;
 
+import interfaces.Crud;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -12,7 +13,8 @@ import java.util.logging.Logger;
 
 import model.connection.*;
 
-public class Usuario
+
+public class Usuario 
 {
     MySqlConnection mysqlConnection = new MySqlConnection();
     Connection connection;
@@ -178,34 +180,6 @@ public class Usuario
         }
         return false;
     }
-    /*public Usuario existeUsuario (String nickname, String password)throws SQLException,
-            ClassNotFoundException{
-     preparedStatement = null;   
-     resultSet = null;
-     connection = mysqlConnection.getConection();
-     
-     String sql = "SELECT * FROM users WHERE nickname = ? and password = ?";
-     
-        {
-            preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setString(1, nickname);
-            preparedStatement.setString(2, password);
-            resultSet = preparedStatement.executeQuery();
-            
-            Usuario usuario = null;
-          
-            if(resultSet.next())
-            {
-                usuario = new Usuario();
-                usuario.setNickname(nickname);
-                usuario.setPassword(password);
-            }
-            connection.close();
-            return usuario;
-        
-    }*/
-     
-     
      public model.dto.Usuario listMostComments()
     {
         String sql = 
@@ -224,7 +198,6 @@ public class Usuario
             this.connection = mysqlConnection.getConection();
             this.preparedStatement = this.connection.prepareStatement(sql);
             this.resultSet = this.preparedStatement.executeQuery();
-            ResultSetMetaData resultSetMetaData = this.resultSet.getMetaData();
             
             if (this.resultSet.next())
             {
