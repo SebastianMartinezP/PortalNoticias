@@ -21,19 +21,15 @@ El portal noticioso “Ole Manolo” desea generar una solución web que permita
  + Galería de imágenes (S) ✔
  + Blog de opiniones (S) ✔
 
-
-### Giselle
-* Los usuarios registrados pueden realizar opiniones (G)
-* Es posible denunciar a los usuarios que realizan opiniones no acordes con la política del portal (G)
-* Dar de baja a un usuario (G)
-
 ### Sebastian
 * Debe tener la posibilidad de visitar las antiguas noticias (S) ✔
 * Posibilidad de ver las versiones anteriores del portal (búsqueda de una fecha en especial) (S) ✔
 * Descarga de una noticia en formato PDF (S) ✔
 * Generar espacios para publicidad por categoría (S) ✔
 * Búsqueda de una noticia (S) ✔
-
+* Los usuarios registrados pueden realizar opiniones (G)
+* Es posible denunciar a los usuarios que realizan opiniones no acordes con la política del portal (G)
+* Dar de baja a un usuario (G)
 
 ### Generar Informe:
  + Noticias mas nuevas ( 2 ) (S) ✔
