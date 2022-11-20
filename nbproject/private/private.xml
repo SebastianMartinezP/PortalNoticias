@@ -3,15 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/E:/DUOC/Java%20web/PortalNoticias%20-%20Main/PortalNoticias/src/java/model/hibernate/dto/Noticia.hbm.xml</file>
-            <file>file:/E:/DUOC/Java%20web/PortalNoticias%20-%20Main/PortalNoticias/src/java/model/hibernate/dto/Comentario.java</file>
-            <file>file:/E:/DUOC/Java%20web/PortalNoticias%20-%20Main/PortalNoticias/src/java/model/dao/Usuario.java</file>
-            <file>file:/E:/DUOC/Java%20web/PortalNoticias%20-%20Main/PortalNoticias/web/jsp/newsFeed.jsp</file>
-            <file>file:/E:/DUOC/Java%20web/PortalNoticias%20-%20Main/PortalNoticias/src/java/controller/ServletControllerOld.java</file>
-            <file>file:/E:/DUOC/Java%20web/PortalNoticias%20-%20Main/PortalNoticias/src/java/model/hibernate/dao/NoticiaDao.java</file>
-            <file>file:/E:/DUOC/Java%20web/PortalNoticias%20-%20Main/PortalNoticias/web/index.jsp</file>
-            <file>file:/E:/DUOC/Java%20web/PortalNoticias%20-%20Main/PortalNoticias/src/java/test/Testing.java</file>
-            <file>file:/E:/DUOC/Java%20web/PortalNoticias%20-%20Main/PortalNoticias/src/java/controller/ServletController.java</file>
+            <file>file:/E:/DUOC/Java%20web/PortalNoticias/web/jsp/newsFeed.jsp</file>
+            <file>file:/E:/DUOC/Java%20web/PortalNoticias/src/java/model/dao/Comentario.java</file>
+            <file>file:/E:/DUOC/Java%20web/PortalNoticias/web/index.jsp</file>
+            <file>file:/E:/DUOC/Java%20web/PortalNoticias/web/jsp/Registro.jsp</file>
+            <file>file:/E:/DUOC/Java%20web/PortalNoticias/src/java/controller/ServletController.java</file>
         </group>
     </open-files>
 </project-private>

@@ -20,7 +20,11 @@
     <center>
         <h1>Inicio de Sesión</h1>
         <div class="w-50">
-            <form action="ServletController?site=index&action=Login" method="GET" target="newsFeed">
+
+            <form action="ServletController?site=index&action=Login" method="POST" target="newsFeed">
+                <div>
+                    <h4 id="message">${message}</h4>    
+                <div/>
                 <div class="mt-2 mb-2">
                     <label for="txtnickname" class="form-label">Nickname: </label>
                     <input type="text" name="txtnickname" id="txtnickname" class="form-control">
@@ -29,18 +33,17 @@
                     <label for="txtpassword" class="form-label">Password: </label>
                     <input type="password" name="txtpassword" id="txtpassword" class="form-control">
                 </div>
-               
+
                 <div class="mt-2 mb-2" style="display:flex">
-                   <button class="btn btn-outline-success form-control" type="submit" id="action" name="action" value="search">Entrar  
-                   </button>                   
-                   <input type="reset" class="btn btn-outline-dark form-control" value="Limpiar" name="btnLimpiar" id="btnLimpiar">
+                    <button class="btn btn-outline-success form-control" type="submit" id="action" name="action" value="search">Entrar  
+                    </button>                   
+                    <input type="reset" class="btn btn-outline-dark form-control" value="Limpiar" name="btnLimpiar" id="btnLimpiar">
                 </div>
-                 <div class="mt-2 mb-2" >
-                   <label for="txtpassword" class="form-label">¿No tienes cuenta? </label>
-                   <a href="ServletController?site=index&action=nuevoRegistro" target="newsFeed" class="btn btn-outline-success form-control">Registrate</a>
-                  
+                <div class="mt-2 mb-2" >
+                    <label for="txtpassword" class="form-label">¿No tienes cuenta? </label>
+                    <a href="ServletController?site=index&action=nuevoRegistro" target="newsFeed" class="btn btn-outline-success form-control">Registrate</a>
                 </div>
-              
+
 
             </form>
         </div>

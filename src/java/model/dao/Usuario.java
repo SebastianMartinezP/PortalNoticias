@@ -13,31 +13,33 @@ import java.util.logging.Logger;
 
 import model.connection.*;
 
-
-public class Usuario 
+public class Usuario
 {
+
     MySqlConnection mysqlConnection = new MySqlConnection();
     Connection connection;
     PreparedStatement preparedStatement;
     ResultSet resultSet;
-    
+
     public String Save(model.dto.Usuario user)
     {
         String sql = "INSERT INTO usuario(nickname, password, is_enabled) VALUES(?,?,?)";
-        try {
+        try
+        {
             this.connection = mysqlConnection.getConection();
             this.preparedStatement = this.connection.prepareStatement(sql);
             this.preparedStatement.setString(1, user.getNickname());
             this.preparedStatement.setString(2, user.getPassword());
             this.preparedStatement.setBoolean(3, user.getIsEnabled());
             this.preparedStatement.executeUpdate();
-            
-        } catch (Exception e) {
+
+        } catch (Exception e)
+        {
             return e.toString();
         }
         return "Usuario guardado correctamente";
     }
-    
+
     public List<model.dto.Usuario> list()
     {
         String sql = "SELECT * FROM usuario";
@@ -68,10 +70,8 @@ public class Usuario
 
         return list;
     }
-    
-    
-    
-    public model.dto.Usuario listByIdUsuario( int idUsuario)
+
+    public model.dto.Usuario listByIdUsuario(int idUsuario)
     {
         String sql = "SELECT * FROM usuario where id_usuario = " + Integer.toString(idUsuario);
         model.dto.Usuario element = new model.dto.Usuario();
@@ -96,13 +96,14 @@ public class Usuario
 
         return element;
     }
-    
+
     public boolean Update(model.dto.Usuario user)
     {
-        String sql = 
-                "UPDATE usuario SET nickname = ?, password = ?, is_enabled = ? WHERE id_usuario = ?";
-        
-        try {
+        String sql
+                = "UPDATE usuario SET nickname = ?, password = ?, is_enabled = ? WHERE id_usuario = ?";
+
+        try
+        {
             this.connection = mysqlConnection.getConection();
             this.preparedStatement = this.connection.prepareStatement(sql);
             this.preparedStatement.setString(1, user.getNickname());
@@ -110,17 +111,18 @@ public class Usuario
             this.preparedStatement.setBoolean(3, user.getIsEnabled());
             this.preparedStatement.setInt(4, user.getIdUsuario());
             this.preparedStatement.executeUpdate();
-            
+
             return true;
-        } catch (Exception e) {
+        } catch (Exception e)
+        {
         }
         return false;
     }
-    
+
     public String UpdateIsEnabledByCredentials(model.dto.Usuario user, boolean newState)
     {
         String sql = "UPDATE usuario SET is_enabled = ? WHERE id_usuario = ?";
-        
+
         try
         {
             this.connection = mysqlConnection.getConection();
@@ -128,99 +130,82 @@ public class Usuario
             this.preparedStatement.setBoolean(1, newState);
             this.preparedStatement.setInt(2, user.getIdUsuario());
             this.preparedStatement.executeUpdate();
-            
+
         } catch (SQLException e)
         {
             return e.toString();
         }
         return "Update ok";
     }
-    public model.dto.Usuario login(String nickname, String pass){
-        model.dto.Usuario u = new model.dto.Usuario();
-        String sql = "SELECT * FROM usuario WHERE nickname = ? and password = ?";
-        try {
-            connection = mysqlConnection.getConection();
-            preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setString(1, nickname);
-            preparedStatement.setString(2, pass);
-            resultSet = preparedStatement.executeQuery();
-            
-            while(resultSet.next()) {            
-                u.setIdUsuario(resultSet.getInt("id_usuario"));
-                u.setNickname(resultSet.getString("nickname"));
-                u.setPassword(resultSet.getString("pass"));
-                u.setIsEnabled(this.resultSet.getBoolean("is_enabled"));
-                
-            }
-        } catch (Exception e) {
-            
-        }
-        return u;
-    }
-     public Boolean login2(String nickname, String pass){
-      
-          model.dto.Usuario u = new model.dto.Usuario();
-        String sql = "SELECT * FROM usuario WHERE nickname = ? and password = ?";
-        try {
-            connection = mysqlConnection.getConection();
-            preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setString(1, nickname);
-            preparedStatement.setString(2, pass);
-            resultSet = preparedStatement.executeQuery();
-            
-            while(resultSet.next()) {            
-                u.setIdUsuario(resultSet.getInt("id_usuario"));
-                u.setNickname(resultSet.getString("nickname"));
-                u.setPassword(resultSet.getString("pass"));
-                u.setIsEnabled(this.resultSet.getBoolean("is_enabled"));
-                return true;
-            }
-        } catch (Exception e) {
-            
-        }
-        return false;
-    }
-     public model.dto.Usuario listMostComments()
+
+    public model.dto.Usuario login(String nickname, String pass)
     {
-        String sql = 
-            "SELECT " +
-            "COUNT(id_comentario) AS cuenta, " +
-            "id_usuario " +
-            "FROM comentario " +
-            "GROUP BY id_usuario " +
-            "ORDER BY CUENTA DESC " +
-            "LIMIT 1;";
+        model.dto.Usuario element = new model.dto.Usuario();
+        String sql = "SELECT * FROM usuario WHERE nickname = ? and password = ?";
+        try
+        {
+            this.connection = mysqlConnection.getConection();
+            this.preparedStatement = connection.prepareStatement(sql);
+            this.preparedStatement.setString(1, nickname);
+            this.preparedStatement.setString(2, pass);
+            this.resultSet = preparedStatement.executeQuery();
+
+            if (this.resultSet.next())
+            {
+                element.setIdUsuario(this.resultSet.getInt("id_usuario"));
+                element.setNickname(this.resultSet.getString("nickname"));
+                element.setPassword(this.resultSet.getString("password"));
+                element.setIsEnabled(this.resultSet.getBoolean("is_enabled"));
+
+            }
+        } catch (Exception e)
+        {
+            System.out.println(e.toString() + ", " + e.getMessage());
+        }
+        
+        return element;
+    }
+
+    public model.dto.Usuario listMostComments()
+    {
+        String sql
+                = "SELECT "
+                + "COUNT(id_comentario) AS cuenta, "
+                + "id_usuario "
+                + "FROM comentario "
+                + "GROUP BY id_usuario "
+                + "ORDER BY CUENTA DESC "
+                + "LIMIT 1;";
         String sql2 = "SELECT COUNT(*) FROM comentario WHERE id_usuario = ?";
         model.dto.Usuario element = new model.dto.Usuario();
-        
+
         try
         {
             this.connection = mysqlConnection.getConection();
             this.preparedStatement = this.connection.prepareStatement(sql);
             this.resultSet = this.preparedStatement.executeQuery();
-            
+
             if (this.resultSet.next())
             {
                 element = listByIdUsuario(this.resultSet.getInt("id_usuario"));
-                //element.setCountComentarios(this.resultSet.getInt("cuenta"));
+                element.setCountComentarios(this.resultSet.getInt("cuenta"));
             }
-            
+
             this.connection = mysqlConnection.getConection();
             this.preparedStatement = this.connection.prepareStatement(sql2);
             preparedStatement.setInt(1, element.getIdUsuario());
             this.resultSet = this.preparedStatement.executeQuery();
-            
+
             if (this.resultSet.next())
             {
                 element.setCountComentarios(this.resultSet.getInt(1));
             }
-            
+
         } catch (Exception e)
         {
-            System.out.println(e.toString() + ", " + e.getMessage()); 
+            System.out.println(e.toString() + ", " + e.getMessage());
         }
         return element;
     }
 
-    
 }

@@ -25,7 +25,7 @@ public class Comentario
             this.preparedStatement.setString(1, comentario.getContenido());
             this.preparedStatement.setBoolean(2, comentario.getIsEnabled());
             this.preparedStatement.setInt(3, comentario.getIdNoticia());
-            this.preparedStatement.setInt(3, comentario.getIdUsuario());
+            this.preparedStatement.setInt(4, comentario.getIdUsuario());
             this.preparedStatement.executeUpdate();
             
         } catch (Exception e) {

@@ -46,6 +46,9 @@
         <h2>OLE MANOLO</h2>
         <h5>Portal de noticias Online</h5>
         <hr class="hr hr-blurry" />
+        <input id="username" name="username" type="hidden" value = "${username}">
+        <input id="password" name="password" type="hidden" value = "${password}">
+        <h5 id="message" >${message}</h5>
     </div>
     
 </body>

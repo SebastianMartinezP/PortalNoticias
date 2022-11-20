@@ -1,16 +1,6 @@
 package test;
 
-
-import com.sun.org.apache.bcel.internal.generic.AALOAD;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import model.dto.Imagen;
-import model.hibernate.dao.*;
-import model.hibernate.dto.Usuario;
-
-
+import model.dao.*;
 
 public class Testing
 {
@@ -134,40 +124,10 @@ public class Testing
         System.out.println("Descripción: "+aux.getcontenido());
         }*/
         
-        NoticiaDao noticiaDao = new NoticiaDao();
-        
-        for (model.hibernate.dto.Noticia aux :noticiaDao.listar())
-        {
-            System.out.println(aux.getFechaEmision());
-        }
-        
-        System.out.println("\n");
-        
-        for (model.hibernate.dto.Noticia aux :noticiaDao.listByDate("2020", "09", "04"))
-        {
-            System.out.println(aux.getFechaEmision());
-        }
-        
-        System.out.println("\n");
-        
-        for (model.hibernate.dto.Noticia aux :noticiaDao.listOldest())
-        {
-            System.out.println(aux.getFechaEmision());
-        }
-        
-        System.out.println("deportes");
-        for (model.hibernate.dto.Noticia aux :noticiaDao.listByTipoNoticia("deportes"))
-        {
-            System.out.println(aux.getFechaEmision());
-        }
-        System.out.println("mujer");
-        for (model.hibernate.dto.Noticia aux :noticiaDao.listByTipoNoticia("mujer"))
-        {
-            System.out.println(aux.getFechaEmision());
-        }
-        
         /////////////////////////////////////////////////////////////////
-        UsuarioDao usuarioDao = new UsuarioDao();
+        model.dao.Usuario usuarioDao = new model.dao.Usuario();
+        System.out.println(usuarioDao.login("Sebastian123", "123").toString());
+        System.out.println(usuarioDao.login("Sebastian123", "13").toString());
         /*
         model.hibernate.dto.Usuario usuario = usuarioDao.buscar(1);
         

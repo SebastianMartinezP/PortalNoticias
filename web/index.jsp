@@ -35,7 +35,10 @@
 
             <!-- Barra Usuario-->
             <div >
+                
                 <div class="mt-3" style="display:flex; justify-content:flex-end; width:100%; padding:0;"> 
+                    
+
                     <a href="ServletController?site=index&action=ingresar" target="newsFeed" class="btn btn-light">Ingresar</a>   
                     <div></div>               
                 </div>
