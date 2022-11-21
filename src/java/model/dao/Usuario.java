@@ -170,11 +170,11 @@ public class Usuario
     {
         String sql
                 = "SELECT "
-                + "COUNT(id_comentario) AS cuenta, "
+                + "COUNT(id_comentario) "
                 + "id_usuario "
                 + "FROM comentario "
                 + "GROUP BY id_usuario "
-                + "ORDER BY CUENTA DESC "
+                ///+ "ORDER BY CUENTA DESC "
                 + "LIMIT 1;";
         String sql2 = "SELECT COUNT(*) FROM comentario WHERE id_usuario = ?";
         model.dto.Usuario element = new model.dto.Usuario();
@@ -188,7 +188,7 @@ public class Usuario
             if (this.resultSet.next())
             {
                 element = listByIdUsuario(this.resultSet.getInt("id_usuario"));
-                element.setCountComentarios(this.resultSet.getInt("cuenta"));
+                element.setCountComentarios(this.resultSet.getInt(1));
             }
 
             this.connection = mysqlConnection.getConection();

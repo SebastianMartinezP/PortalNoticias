@@ -28,8 +28,8 @@ El portal noticioso “Ole Manolo” desea generar una solución web que permita
 * Generar espacios para publicidad por categoría ✔
 * Búsqueda de una noticia  ✔
 * Los usuarios registrados pueden realizar opiniones ✔
-* Es posible denunciar a los usuarios que realizan opiniones no acordes con la política del portal 
-* Dar de baja a un usuario 
+* Es posible denunciar a los usuarios que realizan opiniones no acordes con la política del portal ✔
+* Dar de baja a un usuario ✔
 
 ### Generar Informe:
  + Noticias mas nuevas (2)  ✔

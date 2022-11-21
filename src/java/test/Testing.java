@@ -126,8 +126,7 @@ public class Testing
         
         /////////////////////////////////////////////////////////////////
         model.dao.Usuario usuarioDao = new model.dao.Usuario();
-        System.out.println(usuarioDao.login("Sebastian123", "123").toString());
-        System.out.println(usuarioDao.login("Sebastian123", "13").toString());
+        System.out.println(usuarioDao.listMostComments());
         /*
         model.hibernate.dto.Usuario usuario = usuarioDao.buscar(1);
         

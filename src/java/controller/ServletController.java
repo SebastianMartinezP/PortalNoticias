@@ -68,6 +68,8 @@ public class ServletController extends HttpServlet
                         case "GuardarUsuario":
                             registerRequest(request, response);
                             break;
+                        
+                         
                         default:
                             throw new AssertionError();
                     }
@@ -81,6 +83,9 @@ public class ServletController extends HttpServlet
                             break;
                         case "SaveComment":
                             saveCommentRequest(request, response);
+                            break;
+                        case "reportUser":
+                            reportUserRequest(request, response);
                             break;
                         default:
                             throw new AssertionError();
@@ -212,9 +217,12 @@ public class ServletController extends HttpServlet
         try
         {
             model.dao.Noticia daoNoticia = new model.dao.Noticia();
-
             List<model.dto.Noticia> noticias = daoNoticia.listOldest();
             request.setAttribute("noticias", noticias);
+            
+            model.dto.Usuario user =  (model.dto.Usuario) request.getSession().getAttribute("user");
+            request.setAttribute("user", user);
+            
             request.getRequestDispatcher("jsp/newsFeed.jsp").forward(request, response);
         } catch (Exception e)
         {
@@ -248,6 +256,11 @@ public class ServletController extends HttpServlet
             }
 
             request.setAttribute("noticias", noticias);
+            
+            
+            model.dto.Usuario user =  (model.dto.Usuario) request.getSession().getAttribute("user");
+            request.setAttribute("user", user);
+            
             request.getRequestDispatcher("jsp/newsFeed.jsp").forward(request, response);
         } catch (Exception e)
         {
@@ -271,6 +284,11 @@ public class ServletController extends HttpServlet
             noticias = daoNoticia.listByTitle(tituloNoticia);
 
             request.setAttribute("noticias", noticias);
+            
+            
+            model.dto.Usuario user =  (model.dto.Usuario) request.getSession().getAttribute("user");
+            request.setAttribute("user", user);
+            
             request.getRequestDispatcher("jsp/newsFeed.jsp").forward(request, response);
 
         } catch (Exception e)
@@ -311,6 +329,11 @@ public class ServletController extends HttpServlet
             }
 
             request.setAttribute("noticias", noticias);
+            
+            
+            model.dto.Usuario user =  (model.dto.Usuario) request.getSession().getAttribute("user");
+            request.setAttribute("user", user);
+            
             request.getRequestDispatcher("jsp/newsFeed.jsp").forward(request, response);
         } catch (Exception e)
         {
@@ -467,6 +490,38 @@ public class ServletController extends HttpServlet
             out.write("</p>");
         }
     }
+    
+    protected void reportUserRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+    {
+        try
+        {
+            // Obtenemos el usuario que se pretende banear
+            int IdUsuario = Integer.parseInt(request.getParameter("IdUsuario"));
+            model.dao.Usuario daoUsuario = new model.dao.Usuario();
+            model.dto.Usuario usuarioReported = daoUsuario.listByIdUsuario(IdUsuario);
+            
+            // baneamos usuario
+            daoUsuario.UpdateIsEnabledByCredentials(usuarioReported, false);
+            
+            // baneamos sus comentarios
+            model.dao.Comentario daoComentario = new model.dao.Comentario();
+            daoComentario.UpdateIsEnabledByUser(usuarioReported, false);
+            
+            
+            listOldestNewsRequest(request,response);
+                    
+        } catch (Exception e)
+        {
+            response.setContentType("text/html");
+            PrintWriter out = response.getWriter();
+            out.write("<h1>Error</h1>");
+            out.write("<p>");
+            out.write(e.toString());
+            out.write("</p>");
+        }
+    }
+    
+    
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException

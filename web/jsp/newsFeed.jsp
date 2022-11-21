@@ -200,14 +200,34 @@
 
 
                                                                 <!-- Comentarios -->
-                                                                <div class="d-flex justify-content-center mx-2 my-2">
-                                                                    <form class="d-flex" action="ServletController?site=newsFeed&action=SaveComment" method="POST" target="newsFeed">
-                                                                        <input  id="idNoticia" name="idNoticia" type="hidden" value="${n.getIdNoticia()}">
-                                                                        <input  id="inputComment" name="inputComment" type="text" value="">
-                                                                        <button class="btn btn-success form-control mx-2" type="submit" id="saveComment" name="saveComment" value="send">Enviar    
-                                                                    </form>
-                                                                </div>
-                                                                        
+                                                                <c:choose>
+                                                                    <c:when test="${user.getIsEnabled() == false}">
+                                                                        <div class="justify-content-center mx-2 my-2">
+                                                                            <p>Estás baneado, no puedes comentar.</p>
+                                                                            <div class="d-flex">
+                                                                                <form class="d-flex" action="ServletController?site=newsFeed&action=SaveComment" method="POST"
+                                                                                      target="newsFeed">
+
+                                                                                    <input id="inputComment" name="inputComment" type="text" value="" disabled>
+                                                                                    <button class="btn btn-dark form-control mx-2" type="submit" id="saveComment" name="saveComment"
+                                                                                            value="send" disabled>
+                                                                                    </button>
+                                                                                </form>
+                                                                            </div>
+                                                                        </div>
+                                                                    </c:when>
+                                                                    <c:otherwise>
+                                                                        <div class="d-flex justify-content-center mx-2 my-2">
+                                                                            <form class="d-flex" action="ServletController?site=newsFeed&action=SaveComment" method="POST" target="newsFeed">
+                                                                                <input  id="idNoticia" name="idNoticia" type="hidden" value="${n.getIdNoticia()}">
+                                                                                <input  id="inputComment" name="inputComment" type="text" value="">
+                                                                                <button class="btn btn-success form-control mx-2" type="submit" id="saveComment" name="saveComment" value="send">Enviar    
+                                                                            </form>
+                                                                        </div>
+                                                                    </c:otherwise>
+                                                                </c:choose>
+
+
                                                                 <div class="d-flex justify-content-between">
                                                                     <ul class="list-group list-group-light">
                                                                         <c:forEach var="c" items="${n.comentarios}">
@@ -225,7 +245,7 @@
                                                                                                 </div>
                                                                                             </div>
                                                                                             <div class="card-footer text-muted">
-                                                                                                <a class="btn btn-dark shadow-0 btn-rounded" href="#!" target="newsFeed">
+                                                                                                <a class="btn btn-dark shadow-0 btn-rounded" href="ServletController?site=newsFeed&action=reportUser&IdUsuario=${c.getUsuario().getIdUsuario()}" target="newsFeed">
                                                                                                     <i class="bi bi-flag-fill"></i></i>
                                                                                                 </a>
                                                                                             </div>
